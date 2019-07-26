@@ -1,0 +1,48 @@
+<nav class="navbar navbar-dark fixed-top bg-dark w-100">
+  <a class="navbar-brand nav-tittle" href="#">{{tittle}}</a>
+  <a class="navbar-brand nav-tittle-short" href="#">{{tittleShort}}</a>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.save"
+            (click)="topbarActions.save()">
+      <fa name="save"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.add"
+            (click)="topbarActions.add()">
+      <fa name="plus"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.edit"
+            (click)="topbarActions.edit()">
+      <fa name="edit"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.delete"
+            (click)="topbarActions.delete()">
+      <fa name="trash"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.refresh"
+            (click)="topbarActions.refresh()">
+      <fa name="retweet"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.filter"
+            (click)="topbarActions.filter()">
+      <fa name="filter"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.previous"
+            (click)="topbarActions.previous()">
+      <fa name="arrow-left"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary"
+            *ngIf="!!paginationInfo && !!paginationInfo.page && !!paginationInfo.pages">{{paginationInfo.page}}
+      / {{paginationInfo.pages}}</button>
+    <button type="button" class="btn btn-secondary" *ngIf="!!topbarActions && !!topbarActions.next"
+            (click)="topbarActions.next()">
+      <fa name="arrow-right"></fa>
+    </button>
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false"></button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" href="#">Profile</a>
+      <a class="dropdown-item" href="/logout">Logout</a>
+    </div>
+  </div>
+</nav>

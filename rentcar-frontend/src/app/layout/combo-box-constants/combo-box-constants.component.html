@@ -1,0 +1,8 @@
+<label>{{labelComboBox}}</label>
+<ng-select [ngClass]="{'is-invalid': !!error && !!error[modelField]}"
+            [items]="items" [(ngModel)]="model[modelField]">
+    <ng-template ng-label-tmp ng-option-tmp let-item="item">
+      {{translations.get(item)}}
+    </ng-template>
+</ng-select>
+<div class="invalid-feedback" *ngIf="!!error && !!error[modelField]">{{error[modelField]}}</div>

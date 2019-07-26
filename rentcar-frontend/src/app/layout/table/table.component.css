@@ -1,0 +1,28 @@
+thead tr:nth-child(1) th {
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+table thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background-color: #f7f7f7;
+}
+
+th:after,
+th:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+th:after {
+  bottom: 0;
+  /*border-bottom: 1px solid black;*/
+}
+
+.highlight {
+  background-color: #9fcdff;
+}

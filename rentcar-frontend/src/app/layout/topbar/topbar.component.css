@@ -1,0 +1,24 @@
+.navbar {
+  position: fixed;
+}
+
+.nav-tittle {
+  display: block;
+}
+
+.nav-tittle-short {
+  display: none;
+}
+
+@media (max-width: 768px){
+  .nav-tittle {
+    display: none;
+  }
+
+  .nav-tittle-short {
+    display: block;
+  }
+
+}
+
+

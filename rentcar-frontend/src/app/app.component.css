@@ -1,0 +1,26 @@
+.nav-space {
+  padding-top: 56px;
+}
+
+.col-fixed-sidebar {
+  width: 180px;
+  position:fixed;
+  height:100%;
+  z-index: 1000;
+}
+
+.col-scene {
+  padding-left:195px;
+  z-index:100;
+}
+
+@media (max-width: 768px){
+  .col-fixed-sidebar {
+    width: 60px;
+  }
+
+  .col-scene {
+    padding-left:75px;
+  }
+}
+

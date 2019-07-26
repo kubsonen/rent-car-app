@@ -1,0 +1,39 @@
+<div class="card my-2">
+  <div class="card-header">
+    <h5 class="m-0" *ngIf="mode == formMode.ADD">Add new car</h5>
+    <h5 class="m-0" *ngIf="mode == formMode.EDIT">Edit car</h5>
+  </div>
+  <div class="card-body">
+    <form *ngIf="!!model">
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <app-combo-box-constants [labelComboBox]="'Brand'" [modelField]="'brand'" [model]="model" [error]="error"
+                                   [constantService]="bundlePropertyService" [translateService]="translateService" [groupName]="'Brands'"></app-combo-box-constants>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <app-valid-input [tittle]="'Model'" [field]="'model'" [model]="model" [error]="error"></app-valid-input>
+        </div>
+        <div class="col-md-6 mb-3">
+          <app-valid-input [tittle]="'Plate number'" [field]="'plateNumber'" [model]="model" [error]="error"></app-valid-input>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <app-valid-input [tittle]="'Vin'" [field]="'vin'" [model]="model" [error]="error"></app-valid-input>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <app-date-time-picker [label]="'Production date'" [model]="model" [field]="'productionDate'" [error]="error">
+          </app-date-time-picker>
+        </div>
+        <div class="col-md-6 mb-3">
+          <app-date-time-picker [label]="'Register date'" [model]="model" [field]="'registerDate'" [error]="error">
+          </app-date-time-picker>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

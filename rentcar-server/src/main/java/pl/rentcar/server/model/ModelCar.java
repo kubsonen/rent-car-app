@@ -1,0 +1,19 @@
+package pl.rentcar.server.model;
+
+import lombok.Value;
+import pl.rentcar.server.util.EntityDisableCopy;
+
+import java.util.Date;
+import java.util.UUID;
+
+@Value
+public class ModelCar implements CrudModel {
+    @EntityDisableCopy
+    private UUID id;
+    private String brand;
+    private String model;
+    private String plateNumber;
+    private Date productionDate;
+    private Date registerDate;
+    private String vin;
+}

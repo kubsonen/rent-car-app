@@ -1,0 +1,18 @@
+<app-authority-tabs>
+  <div class="form-row">
+    <div class="col-md-6 mb-6 px-3 py-2">
+      <div class="list-group" *ngIf="!!authorities">
+        <a class="list-group-item list-group-item-dark text-center font-weight-bold">Authority</a>
+        <a *ngFor="let item of authorities" class="list-group-item list-group-item-action"
+           (click)="selectAuthority(item)" [ngClass]="{'active': item.selected == true}">{{item.authority}}</a>
+      </div>
+    </div>
+    <div class="col-md-6 mb-6 px-3 py-2">
+      <div class="list-group" *ngIf="!!privileges">
+        <a class="list-group-item list-group-item-dark text-center font-weight-bold">Privilege</a>
+        <a *ngFor="let item of privileges" class="list-group-item list-group-item-action"
+           [ngClass]="{'active': item.selected == true}" (click)="performPrivilege(item)">{{item.privilege}}</a>
+      </div>
+    </div>
+  </div>
+</app-authority-tabs>

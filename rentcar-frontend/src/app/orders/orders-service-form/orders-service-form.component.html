@@ -1,0 +1,34 @@
+<form *ngIf="loaded">
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <app-date-time-picker [label]="'Start rent'" [model]="orderService" [field]="'startRent'" [error]="error">
+      </app-date-time-picker>
+    </div>
+    <div class="col-md-6 mb-3">
+      <app-date-time-picker [label]="'End rent'" [model]="orderService" [field]="'endRent'" [error]="error">
+      </app-date-time-picker>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <app-valid-input [tittle]="'Start mileage'" [field]="'startMileage'" [model]="orderService" [error]="error"></app-valid-input>
+    </div>
+    <div class="col-md-6 mb-3">
+      <app-valid-input [tittle]="'End mileage'" [field]="'endMileage'" [model]="orderService" [error]="error"></app-valid-input>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <app-valid-input [tittle]="'Price'" [field]="'price'" [model]="orderService" [error]="error"></app-valid-input>
+    </div>
+    <div class="col-md-6 mb-3">
+      <app-combo-box-constants [labelComboBox]="'Currency'" [modelField]="'currency'" [model]="orderService" [error]="error"
+                               [constantService]="bundlePropertyService" [translateService]="translateService" [groupName]="'Currency'"></app-combo-box-constants>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <app-valid-input [tittle]="'Fuel'" [field]="'fuel'" [model]="orderService" [error]="error"></app-valid-input>
+    </div>
+  </div>
+</form>

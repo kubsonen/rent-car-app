@@ -1,0 +1,5 @@
+<label>{{tittle}}</label>
+<textarea class="form-control" rows="{{rows}}" *ngIf="!!model" [ngClass]="{'is-invalid': !!error && !!error[field]}"
+          [(ngModel)]="model[field]"
+          [ngModelOptions]="{standalone: true}"></textarea>
+<div class="invalid-feedback" *ngIf="!!error && !!error[field]">{{error[field]}}</div>

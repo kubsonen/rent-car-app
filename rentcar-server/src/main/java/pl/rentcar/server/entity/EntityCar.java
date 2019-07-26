@@ -1,0 +1,40 @@
+package pl.rentcar.server.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.envers.Audited;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Getter
+@Setter
+@Entity
+@Audited
+@Table(name = "car")
+public class EntityCar extends EntityCommon {
+
+    private String brand;
+
+    private String model;
+
+    private String type; //Lorry, Bus, Passenger car
+
+    private String plateNumber;
+
+    private Date productionDate;
+
+    private Date registerDate;
+
+    private String vin;
+
+    private Double power;
+
+    private Double torque;
+
+    @OneToMany
+    @JoinColumn(name = "car_id")
+    private List<EntityRepair> repairs;
+
+}

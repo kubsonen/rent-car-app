@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs mt-2" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" id="authority-tab" [routerLink]="['/authority']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" role="tab">Authority</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="privilege-tab" [routerLink]="['/authority/privileges']" [routerLinkActive]="['active']">Privilege</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="setup-tab" [routerLink]="['/authority/setup']" [routerLinkActive]="['active']">Setup</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade active show active border-bottom border-left border-right" id="home" role="tabpanel" aria-labelledby="authority-tab">
+    <ng-content></ng-content>
+  </div>
+</div>

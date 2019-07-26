@@ -1,0 +1,11 @@
+<div class="card my-2" *ngIf="!!mode">
+  <div class="card-header">
+    <h5 class="m-0" *ngIf="mode == formModes.ADD">Add new {{modelName}}</h5>
+    <h5 class="m-0" *ngIf="mode == formModes.EDIT">Edit {{modelName}}</h5>
+  </div>
+  <div class="card-body">
+    <div *ngIf="!!model">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

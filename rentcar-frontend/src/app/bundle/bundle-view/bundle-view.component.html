@@ -1,0 +1,55 @@
+<div class="bundle-header row pt-2">
+  <div class="col-lg-12">
+    <div class="form-group">
+      <label for="bundleGroupSelect" class="font-weight-bold">Bundle group</label>
+      <select [(ngModel)]="selectedBundleGroup" (ngModelChange)="selectGroup()" class="form-control form-control-sm"
+              id="bundleGroupSelect">
+        <option [ngValue]="undefined"></option>
+        <option *ngFor="let bundle of bundleGroups" [ngValue]="bundle"> {{bundle.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="bundle-table">
+  <div class="row">
+    <table class="table table-bordered table-sm">
+      <thead>
+      <tr>
+        <th class="text-center">
+          <div class="btn-group">
+            <button class="dropdown-custom-button btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"></button>
+            <div class="dropdown-menu shadow-sm">
+              <button class="dropdown-item btn-sm" (click)="addBundleProperty()">Add value</button>
+              <button class="dropdown-item btn-sm" (click)="deleteProperties()">Delete value</button>
+            </div>
+          </div>
+        </th>
+        <th style="min-width: 200px;" scope="col">Value</th>
+        <th style="min-width: 200px;" scope="col">Polish</th>
+        <th style="min-width: 200px;" scope="col">English</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of bundleProperties" (dblclick)="editProperty(p)">
+        <td *ngIf="!p.inEdit" class="text-center align-middle"><input type="checkbox" [(ngModel)]="p.selected"></td>
+        <td *ngIf="p.inEdit" class="text-center align-middle">
+          <button type="button" class="dropdown-custom-button" (click)="saveProperty(p)">
+            <fa name="save"></fa>
+          </button>
+        </td>
+
+        <td>{{p.propertyName}}</td>
+
+        <td *ngIf="!p.inEdit">{{p.bundleValuePolish}}</td>
+        <td *ngIf="p.inEdit"><input [(ngModel)]="p.bundleValuePolish" type="text" class="form-control form-control-sm">
+        </td>
+
+        <td *ngIf="!p.inEdit">{{p.bundleValueEnglish}}</td>
+        <td *ngIf="p.inEdit"><input [(ngModel)]="p.bundleValueEnglish" type="text" class="form-control form-control-sm">
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="card my-2">
+  <div class="card-header">
+    <h5 class="m-0" *ngIf="mode == formMode.ADD">Add new client</h5>
+    <h5 class="m-0" *ngIf="mode == formMode.EDIT">Edit client</h5>
+  </div>
+  <div class="card-body">
+    <form *ngIf="!!client">
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <app-valid-input [tittle]="'Unique name'" [field]="'uniqueName'" [model]="client" [error]="error"></app-valid-input>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <app-valid-input [tittle]="'Full name'" [field]="'fullName'" [model]="client" [error]="error"></app-valid-input>
+        </div>
+        <div class="col-md-6 mb-3">
+          <app-valid-input [tittle]="'Email'" [field]="'email'" [model]="client" [error]="error"></app-valid-input>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <app-combo-box-constants [labelComboBox]="'Language'" [modelField]="'language'" [model]="client" [error]="error"
+                                   [constantService]="bundlePropertyService" [translateService]="translateService" [groupName]="'Languages'"></app-combo-box-constants>
+        </div>
+        <div class="col-md-6 mb-3">
+          <app-valid-input [tittle]="'Nip'" [field]="'nip'" [model]="client" [error]="error"></app-valid-input>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <app-valid-textarea [rows]="3" [tittle]="'Address'" [field]="'address'" [model]="client" [error]="error"></app-valid-textarea>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <app-valid-input [tittle]="'Phone number'" [field]="'phoneNumber'" [model]="client" [error]="error"></app-valid-input>
+        </div>
+        <div class="col-md-4 mb-3">
+          <app-valid-input [tittle]="'Country'" [field]="'country'" [model]="client" [error]="error"></app-valid-input>
+        </div>
+        <div class="col-md-4 mb-3">
+          <app-valid-input [tittle]="'Postal code'" [field]="'postalCode'" [model]="client" [error]="error"></app-valid-input>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

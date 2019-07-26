@@ -1,0 +1,27 @@
+.bundle-header {
+  background-color: #edecec;
+  position: fixed;
+  height: 90px;
+  width: calc(100% - 180px);
+  z-index: 1000;
+}
+
+.bundle-table {
+  position: absolute;
+  top: 90px;
+  width: calc(100% - 210px);
+}
+
+@media (max-width: 768px){
+  .bundle-header {
+    width: calc(100% - 60px);
+  }
+  .bundle-table {
+    width: calc(100% - 60px);
+  }
+}
+
+.dropdown-custom-button {
+  border: 0px;
+  background: transparent;
+}

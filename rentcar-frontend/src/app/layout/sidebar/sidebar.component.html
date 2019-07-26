@@ -1,0 +1,66 @@
+<nav class="h-100 bg-light sidebar">
+  <div class="sidebar-content">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+          <fa-icon [icon]="iconDashboard" size="lg"></fa-icon>
+          <span class="caption"> Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/cars']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconCars" size="lg"></fa-icon>
+          <span class="caption"> Cars</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/clients']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconClients" size="lg"></fa-icon>
+          <span class="caption"> Clients</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/users']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconUsers" size="lg"></fa-icon>
+          <span class="caption"> Users</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/authority']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconPrivilege" size="lg"></fa-icon>
+          <span class="caption"> Authorities</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/orders']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconOrders" size="lg"></fa-icon>
+          <span class="caption"> Orders</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/price-list']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconPriceList" size="lg"></fa-icon>
+          <span class="caption"> Price list</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/fuels']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconFuel" size="lg"></fa-icon>
+          <span class="caption"> Refuelling</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/repairs']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconRepair" size="lg"></fa-icon>
+          <span class="caption"> Repairs</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/bundle']" [routerLinkActive]="['active']">
+          <fa-icon [icon]="iconBundle" size="lg"></fa-icon>
+          <span class="caption"> Bundle</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
