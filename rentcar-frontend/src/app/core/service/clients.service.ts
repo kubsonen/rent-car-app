@@ -4,11 +4,13 @@ import {Observable} from 'rxjs';
 import {Client} from '../model/client.model';
 import {Search} from '../model/search.model';
 import {ComboBoxService} from '../abstract/combo-box-service';
-import {ResourceService} from './resource.service';
+import {HttpOptions, ResourceService} from './resource.service';
 import {HttpClient} from '@angular/common/http';
+import {InputComboItem} from '../../layout/input-field/input-field.component';
+import {map} from 'rxjs/operators';
 
 @Injectable()
-export class ClientsService extends ResourceService<Client> implements ComboBoxService<Client> {
+export class ClientsService extends ResourceService<Client> implements ComboBoxService {
 
   private readonly clientsUrl: string = 'client';
 
@@ -17,11 +19,21 @@ export class ClientsService extends ResourceService<Client> implements ComboBoxS
     super(httpClient, 'client');
   }
 
-  search(search: Search): Observable<Client[]> {
+  searchComboItem(search: Search): Observable<InputComboItem[]> {
     return this.searchClients(search);
   }
 
-  searchClients(search: Search): Observable<Client[]> {
-    return this.api.get(this.clientsUrl + '/search', search);
+  searchClients(search: Search): Observable<InputComboItem[]> {
+    return this.api.get(this.clientsUrl + '/search', search)
+      .pipe(map((clients: Client[]) => clients.map(client => new InputComboItem(client.fullName, client.id))));
   }
+
+  getByIdComboItem(uuid: string): Observable<InputComboItem> {
+    return this.getById(uuid).pipe(map(client => new InputComboItem(client.fullName, client.id)));
+  }
+
+  getAllComboItem(): Observable<InputComboItem[]> {
+    return undefined;
+  }
+
 }

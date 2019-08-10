@@ -37,7 +37,6 @@ export class DateTimePickerComponent implements OnInit {
   }
 
   changeCalendar() {
-    console.log(this.error);
     if (this.dateModel && this.timeModel) {
       this.model[this.field] =
         new Date(this.dateModel.year, this.dateModel.month - 1, this.dateModel.day, this.timeModel.hour, this.timeModel.minute);

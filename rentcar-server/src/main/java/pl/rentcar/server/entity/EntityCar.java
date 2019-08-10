@@ -21,6 +21,10 @@ public class EntityCar extends EntityCommon {
 
     private String type; //Lorry, Bus, Passenger car
 
+    private String fuelType;
+
+    private Integer engineCapacity;
+
     private String plateNumber;
 
     private Date productionDate;
@@ -28,10 +32,6 @@ public class EntityCar extends EntityCommon {
     private Date registerDate;
 
     private String vin;
-
-    private Double power;
-
-    private Double torque;
 
     @OneToMany
     @JoinColumn(name = "car_id")

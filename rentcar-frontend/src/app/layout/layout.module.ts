@@ -18,11 +18,12 @@ import {ValidTextareaComponent} from './valid-textarea/valid-textarea.component'
 import {ComboBoxConstantsComponent} from './combo-box-constants/combo-box-constants.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DateTimePickerComponent} from './date-time-picker/date-time-picker.component';
+import { InputFieldComponent } from './input-field/input-field.component';
 
 @NgModule({
   declarations: [SidebarComponent, TopbarComponent, TableComponent, ModalComponent, ValidInputComponent,
     FormComponent, ListComponent, ModalDirective, ComboBoxComponent, ValidTextareaComponent, ComboBoxConstantsComponent,
-    DateTimePickerComponent],
+    DateTimePickerComponent, InputFieldComponent],
   exports: [
     SidebarComponent,
     TopbarComponent,
@@ -33,7 +34,8 @@ import {DateTimePickerComponent} from './date-time-picker/date-time-picker.compo
     ComboBoxComponent,
     ValidTextareaComponent,
     ComboBoxConstantsComponent,
-    DateTimePickerComponent
+    DateTimePickerComponent,
+    InputFieldComponent
   ],
   imports: [
     CommonModule,

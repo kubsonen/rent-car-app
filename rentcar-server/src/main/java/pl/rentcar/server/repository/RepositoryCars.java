@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RepositoryCars extends RepositoryCommon<ModelCar, EntityCar> {
     List<ModelCar> findByPlateNumberContainingIgnoreCase(String plateNumber);
+    List<ModelCar> findTop10ByBrandContainingIgnoreCaseOrPlateNumberContainingIgnoreCaseOrModelContainingIgnoreCase(String brand, String plateNumber, String model);
 }

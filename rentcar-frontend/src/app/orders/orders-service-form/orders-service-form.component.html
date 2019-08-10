@@ -1,34 +1,44 @@
 <form *ngIf="loaded">
   <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <app-date-time-picker [label]="'Start rent'" [model]="orderService" [field]="'startRent'" [error]="error">
-      </app-date-time-picker>
-    </div>
-    <div class="col-md-6 mb-3">
-      <app-date-time-picker [label]="'End rent'" [model]="orderService" [field]="'endRent'" [error]="error">
-      </app-date-time-picker>
+    <div class="col-md-12">
+      <app-input-field [inputField]="carInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <app-valid-input [tittle]="'Start mileage'" [field]="'startMileage'" [model]="orderService" [error]="error"></app-valid-input>
+    <div class="col-md-6">
+      <app-input-field [inputField]="startRentInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
     </div>
-    <div class="col-md-6 mb-3">
-      <app-valid-input [tittle]="'End mileage'" [field]="'endMileage'" [model]="orderService" [error]="error"></app-valid-input>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <app-valid-input [tittle]="'Price'" [field]="'price'" [model]="orderService" [error]="error"></app-valid-input>
-    </div>
-    <div class="col-md-6 mb-3">
-      <app-combo-box-constants [labelComboBox]="'Currency'" [modelField]="'currency'" [model]="orderService" [error]="error"
-                               [constantService]="bundlePropertyService" [translateService]="translateService" [groupName]="'Currency'"></app-combo-box-constants>
+    <div class="col-md-6">
+      <app-input-field [inputField]="endRentInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <app-valid-input [tittle]="'Fuel'" [field]="'fuel'" [model]="orderService" [error]="error"></app-valid-input>
+    <div class="col-md-6">
+      <app-input-field [inputField]="startMileageInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
+    </div>
+    <div class="col-md-6">
+      <app-input-field [inputField]="endMileageInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <app-input-field [inputField]="priceInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
+    </div>
+    <div class="col-md-6">
+      <app-input-field [inputField]="fuelInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6">
+      <app-input-field [inputField]="currencyInput" [model]="orderService" [error]="error"
+                       [loaded]="loaded"></app-input-field>
     </div>
   </div>
 </form>

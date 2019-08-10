@@ -18,4 +18,5 @@ public class ModelOrder implements CrudModel{
     @EntityDisableCopy
     private String clientUniqueName;
     private Date orderDate;
+    private String comments;
 }

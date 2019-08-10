@@ -12,6 +12,9 @@ public class ModelCar implements CrudModel {
     private UUID id;
     private String brand;
     private String model;
+    private String type;
+    private String fuelType;
+    private Integer engineCapacity;
     private String plateNumber;
     private Date productionDate;
     private Date registerDate;

@@ -26,6 +26,8 @@ public class ModelOrderService implements CrudModel{
     private Double endMileage;
     @NotNull
     private Double fuel;
+    @NotNull
     private BigDecimal price;
+    @NotNull
     private String currency;
 }

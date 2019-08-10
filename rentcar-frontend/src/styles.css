@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+.label-sm {
+  font-size: 14px;
+}
+
+/*height: calc(1.5em + 0.5rem + 2px);*/

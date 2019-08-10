@@ -1,25 +1,28 @@
-
 <label>{{label}}</label>
-<div class="input-group mb-3">
+<div class="input-group">
   <div class="input-group-prepend" [ngbPopover]="datetimeContent" placement="right" [autoClose]="'outside'">
     <span class="input-group-text" id="basic-addon1"><fa-icon [icon]="calendarIcon" size="sm"></fa-icon></span>
   </div>
-  <input type="text" class="form-control" [ngClass]="{'is-invalid': !!error && !!error[field]}" [value]="model[field] | date: 'yyyy-MM-dd HH:mm'">
+  <input type="text" class="form-control" [ngClass]="{'is-invalid': !!error && !!error[field]}"
+         [value]="model[field] | date: 'yyyy-MM-dd HH:mm'">
 </div>
-<div class="invalid-feedback" *ngIf="!!error && !!error[field]">{{error[field]}}</div>
+<div class="invalid-feedback d-inline" *ngIf="!!error && !!error[field]">{{error[field]}}</div>
+
 
 <ng-template #datetimeContent>
   <div class="mx-auto">
     <div *ngIf="!showTimePicker">
       <ngb-datepicker [(ngModel)]="dateModel" (ngModelChange)="changeCalendar()"></ngb-datepicker>
-      <button class="btn btn-block btn-outline-secondary mt-2" type="button" [ngbPopover]="datetimeContent" [autoClose]="'outside'"
+      <button class="btn btn-block btn-outline-secondary mt-2" type="button" [ngbPopover]="datetimeContent"
+              [autoClose]="'outside'"
               placement="right" (click)="switchDateTimeSelector($event)">
         <fa-icon [icon]="timeIcon" size="sm"></fa-icon>
       </button>
     </div>
     <div *ngIf="showTimePicker">
       <ngb-timepicker [(ngModel)]="timeModel" (ngModelChange)="changeCalendar()"></ngb-timepicker>
-      <button class="btn btn-block btn-outline-secondary mt-2" type="button" [ngbPopover]="datetimeContent" [autoClose]="'outside'"
+      <button class="btn btn-block btn-outline-secondary mt-2" type="button" [ngbPopover]="datetimeContent"
+              [autoClose]="'outside'"
               placement="right" (click)="switchDateTimeSelector($event)">
         <fa-icon [icon]="dateIcon" size="sm"></fa-icon>
       </button>

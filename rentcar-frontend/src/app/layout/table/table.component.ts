@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TableResponse} from '../../core/model/table-response.model';
 import {Common} from '../../core/model/common.model';
+import {Commons} from '../../core/model/commons.model';
 
 @Component({
   selector: 'app-table',
@@ -15,6 +16,7 @@ export class TableComponent implements OnInit {
   @Input() dataTable: TableResponse<Common>;
   @Input() doubleClickAction: Function;
   @Input() singleSelect = false;
+  @Input() dblClick: () => void;
 
   private multipleLock = false;
   private isAllSelectionActive = false;
@@ -23,6 +25,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('Init table.');
   }
 
   unselectAll() {
@@ -78,6 +81,22 @@ export class TableComponent implements OnInit {
     }
   }
 
+
+  getSelectedCommons(): Commons {
+
+    const c: Commons = new Commons();
+    const ids: Array<string> = new Array<string>();
+
+    this.dataTable.data.forEach(model => {
+      if (model.selected) {
+        ids.push(model.id);
+      }
+    });
+
+    c.ids = ids;
+    return c;
+  }
+
   selectMultiple(c: Common) {
     if (this.singleSelect) {
       this.unselectAll();
@@ -108,6 +127,9 @@ export class TableComponent implements OnInit {
   doubleClick() {
     if (this.doubleClickAction !== undefined) {
       this.doubleClickAction();
+    }
+    if (this.dblClick !== undefined) {
+      this.dblClick();
     }
   }
 

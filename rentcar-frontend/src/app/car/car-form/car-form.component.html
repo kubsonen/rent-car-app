@@ -6,32 +6,42 @@
   <div class="card-body">
     <form *ngIf="!!model">
       <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <app-combo-box-constants [labelComboBox]="'Brand'" [modelField]="'brand'" [model]="model" [error]="error"
-                                   [constantService]="bundlePropertyService" [translateService]="translateService" [groupName]="'Brands'"></app-combo-box-constants>
+        <div class="col-md-12">
+          <app-input-field [inputField]="brandInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <app-valid-input [tittle]="'Model'" [field]="'model'" [model]="model" [error]="error"></app-valid-input>
-        </div>
-        <div class="col-md-6 mb-3">
-          <app-valid-input [tittle]="'Plate number'" [field]="'plateNumber'" [model]="model" [error]="error"></app-valid-input>
+        <div class="col-md-12">
+          <app-input-field [inputField]="modelInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <app-valid-input [tittle]="'Vin'" [field]="'vin'" [model]="model" [error]="error"></app-valid-input>
+        <div class="col-md-6">
+          <app-input-field [inputField]="typeInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+        <div class="col-md-6">
+          <app-input-field [inputField]="fuelTypeInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <app-date-time-picker [label]="'Production date'" [model]="model" [field]="'productionDate'" [error]="error">
-          </app-date-time-picker>
+        <div class="col-md-6">
+          <app-input-field [inputField]="vinInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
         </div>
-        <div class="col-md-6 mb-3">
-          <app-date-time-picker [label]="'Register date'" [model]="model" [field]="'registerDate'" [error]="error">
-          </app-date-time-picker>
+        <div class="col-md-6">
+          <app-input-field [inputField]="plateNumberInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6">
+          <app-input-field [inputField]="productionDateInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+        <div class="col-md-6">
+          <app-input-field [inputField]="registerDateInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6">
+          <app-input-field [inputField]="engineCapacityInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
     </form>

@@ -1,6 +1,7 @@
 <label>{{labelComboBox}}</label>
 <ng-select [ngClass]="{'is-invalid': !!error && !!error[modelField]}"
-  *ngIf="isLoaded" [items]="items" [bindLabel]="bindLabel" [bindValue]="bindValue" [(ngModel)]="model[modelField]"
-           (search)="searchModels($event)" [searchFn]="customSearchFn">
+           *ngIf="isLoaded" [items]="items" [(ngModel)]="model[modelField]"
+           (search)="searchModels($event)" [searchFn]="customSearchFn"
+           [bindLabel]="'label'" [bindValue]="'value'">
 </ng-select>
 <div class="invalid-feedback" *ngIf="!!error && !!error[modelField]">{{error[modelField]}}</div>

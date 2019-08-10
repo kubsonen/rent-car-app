@@ -1,0 +1,73 @@
+<!-- Input field component -->
+<div *ngIf="!!model && !!inputField&& loaded == true" class="form-group">
+
+  <!-- Label -->
+  <label class="input-field-label">{{inputField.label}}</label>
+
+  <!--  Text fields -->
+  <div
+    *ngIf="inputField.type == inputType.TEXT || inputField.type == inputType.INTEGER || inputField.type == inputType.DECIMAL">
+    <input type="text" class="form-control form-control-sm" *ngIf="!!model"
+           [ngClass]="{'is-invalid': !!error && !!error[inputField.field]}" [(ngModel)]="model[inputField.field]"
+           [ngModelOptions]="{standalone: true}">
+  </div>
+
+  <!-- Text area fields -->
+  <div *ngIf="inputField.type == inputType.TEXT_AREA">
+    <textarea class="form-control form-control-sm" rows="{{inputField.textAreaRows}}"
+              [ngClass]="{'is-invalid': !!error && !!error[inputField.field]}"
+              [(ngModel)]="model[inputField.field]"
+              [ngModelOptions]="{standalone: true}"></textarea>
+  </div>
+
+  <!-- Date fields -->
+  <div *ngIf="inputField.type == inputType.DATE">
+    <div class="input-group input-group-sm">
+      <div class="input-group-prepend" [ngbPopover]="datetimeContent" placement="right" [autoClose]="'outside'">
+        <span class="input-group-text" id="basic-addon1"><fa-icon [icon]="calendarIcon" size="sm"></fa-icon></span>
+      </div>
+      <input type="text" class="form-control form-control-sm"
+             [ngClass]="{'is-invalid': !!error && !!error[inputField.field]}"
+             [value]="model[inputField.field] | date: 'yyyy-MM-dd HH:mm'">
+    </div>
+  </div>
+
+  <!-- Combo box fields -->
+  <div *ngIf="inputField.type == inputType.COMBO || inputField.type == inputType.COMBO_CONST">
+    <ng-select class="combo-box-small" [ngClass]="{'is-invalid': !!error && !!error[inputField.field]}"
+               *ngIf="comboBoxLoaded" [items]="items" [(ngModel)]="model[inputField.field]"
+               (search)="searchModels($event)" [searchFn]="customSearchFn"
+               [bindLabel]="'label'" [bindValue]="'value'">
+    </ng-select>
+  </div>
+
+  <!-- Error info -->
+  <div class="invalid-feedback d-inline" *ngIf="!!error && !!error[inputField.field]">{{error[inputField.field]}}</div>
+
+</div>
+
+<!-- Datetime popover -->
+<ng-template #datetimeContent>
+  <div class="mx-auto">
+    <div *ngIf="!showTimePicker">
+      <ngb-datepicker [(ngModel)]="dateModel" (ngModelChange)="changeCalendar()"></ngb-datepicker>
+      <button class="btn btn-block btn-outline-secondary mt-2" type="button" [ngbPopover]="datetimeContent"
+              [autoClose]="'outside'"
+              placement="right" (click)="switchDateTimeSelector($event)">
+        <fa-icon [icon]="timeIcon" size="sm"></fa-icon>
+      </button>
+    </div>
+    <div *ngIf="showTimePicker">
+      <ngb-timepicker [(ngModel)]="timeModel" (ngModelChange)="changeCalendar()"></ngb-timepicker>
+      <button class="btn btn-block btn-outline-secondary mt-2" type="button" [ngbPopover]="datetimeContent"
+              [autoClose]="'outside'"
+              placement="right" (click)="switchDateTimeSelector($event)">
+        <fa-icon [icon]="dateIcon" size="sm"></fa-icon>
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+
+
+

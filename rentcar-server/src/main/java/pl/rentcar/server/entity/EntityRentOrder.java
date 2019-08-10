@@ -15,7 +15,6 @@ import java.util.List;
 @Table(name = "rent_order")
 public class EntityRentOrder extends EntityCommon {
 
-    @Column(name = "order_number")
     private String orderNumber;
 
     @ManyToOne(cascade = CascadeType.DETACH)
@@ -26,23 +25,10 @@ public class EntityRentOrder extends EntityCommon {
     @JoinColumn(name = "order_id")
     private List<EntityOrderService> services;
 
-    @Column(name = "invoice_number")
     private String invoiceNumber;
 
-    @Column(name = "comments")
     private String comments;
 
-    @Column(name = "order_date")
     private Date orderDate;
 
-    @Override
-    public String toString() {
-        return "EntityRentOrder{" +
-                "orderNumber='" + orderNumber + '\'' +
-                ", client=" + client +
-                ", services=" + services +
-                ", invoiceNumber='" + invoiceNumber + '\'' +
-                ", comments='" + comments + '\'' +
-                '}';
-    }
 }

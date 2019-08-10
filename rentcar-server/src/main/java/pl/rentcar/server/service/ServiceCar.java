@@ -15,8 +15,9 @@ public class ServiceCar extends CrudServiceImplementation<ModelCar, ModelCar, En
     private RepositoryCars repositoryCars;
 
     @Override
-    public List<ModelCar> searchModels(String searchText) throws Throwable {
-        return repositoryCars.findByPlateNumberContainingIgnoreCase(searchText);
+    public List<ModelCar> searchModels(String searchText) {
+        return repositoryCars.searchHelper(searchText.split(" "),
+                "findTop10ByBrandContainingIgnoreCaseOrPlateNumberContainingIgnoreCaseOrModelContainingIgnoreCase");
     }
 
 }

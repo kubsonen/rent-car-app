@@ -5,6 +5,10 @@ import * as $ from 'jquery';
 import {TableResponse} from '../model/table-response.model';
 import {Commons} from '../model/commons.model';
 import {CrudService} from '../abstract/crud-service';
+import {Search} from '../model/search.model';
+import {map} from 'rxjs/operators';
+import {Client} from '../model/client.model';
+import {InputComboItem} from '../../layout/input-field/input-field.component';
 
 export class HttpOptions {
   headers: HttpHeaders;
@@ -23,6 +27,10 @@ export class ResourceService<R extends Common> implements CrudService<R> {
   protected readonly resourceApiPrefix: string = 'http://localhost:8080/api/';
 
   constructor(protected httpClient: HttpClient, protected endpoint: string) {
+  }
+
+  find(search: Search): Observable<R[]> {
+    return this.httpClient.get<R[]>(this.resourceApiPrefix + this.endpoint + '/search' + '?' + $.param(search), new HttpOptions());
   }
 
   post(body: R, path?: string): Observable<R> {

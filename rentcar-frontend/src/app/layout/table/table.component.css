@@ -8,6 +8,7 @@ table thead th {
   position: sticky;
   top: 0px;
   background-color: #f7f7f7;
+  min-width: 350px;
 }
 
 th:after,
@@ -25,4 +26,8 @@ th:after {
 
 .highlight {
   background-color: #9fcdff;
+}
+
+.selector-column {
+  min-width: 40px !important;
 }

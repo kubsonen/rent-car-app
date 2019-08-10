@@ -3,40 +3,52 @@
     <h5 class="m-0" *ngIf="mode == formMode.ADD">Add new order</h5>
     <h5 class="m-0" *ngIf="mode == formMode.EDIT">Edit order</h5>
   </div>
+
   <div class="card-body">
     <form *ngIf="!!model">
       <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <app-combo-box [labelComboBox]="'Clients'" [comboboxService]="clientService" [model]="model"
-                         [modelField]="'clientId'" [bindLabel]="'uniqueName'" [bindValue]="'id'" [error]="error">
-          </app-combo-box>
+        <div class="col-md-12">
+          <app-input-field [inputField]="clientsInput" [model]="model" [error]="error"
+                           [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <app-date-time-picker [label]="'Order date'" [model]="model" [field]="'orderDate'" [error]="error">
-          </app-date-time-picker>
+        <div class="col-md-12">
+          <app-input-field [inputField]="orderDateInput" [model]="model" [error]="error"
+                           [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="commentsInput" [model]="model" [error]="error"
+                           [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
     </form>
   </div>
-  <div class="card-header border-top">
-    <div class="d-flex justify-content-between">
-      <h5 class="m-0">Order services</h5>
-      <div class="dropdown show dropleft">
-        <a style="color: black;" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <fa-icon [icon]="iconMore" size="sm"></fa-icon>
-        </a>
-        <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuLink">
-          <button class="dropdown-item" (click)="refreshOrderServices()">Refresh services</button>
-          <button class="dropdown-item" (click)="addOrderService()">Add service</button>
-          <button class="dropdown-item" >Delete services</button>
-        </div>
-      </div>
 
+  <div *ngIf="mode === formMode.EDIT">
+    <div class="card-header border-top">
+      <div class="d-flex justify-content-between">
+        <h5 class="m-0">Order services</h5>
+        <div class="dropdown show dropleft">
+          <a style="color: black;" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <fa-icon [icon]="iconMore" size="sm"></fa-icon>
+          </a>
+          <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuLink">
+            <button class="dropdown-item" (click)="refreshOrderServices()">Refresh services</button>
+            <button class="dropdown-item" (click)="addOrderService()">Add service</button>
+            <button class="dropdown-item" (click)="deleteOrderService()">Delete services</button>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-  <div class="card-body p-0">
-      <app-table [captions]="captionsOrderService" [columns]="columnsOrderService" [dataTable]="tableResponseOrderService"  [tableHeightStyle]="'300px'"></app-table>
+    <div class="card-body p-0">
+      <app-table #orderServices [captions]="captionsOrderService" [columns]="columnsOrderService"
+                 [dataTable]="tableResponseOrderService" [dblClick]="editItem"
+                 [tableHeightStyle]="'300px'"></app-table>
+    </div>
   </div>
 </div>

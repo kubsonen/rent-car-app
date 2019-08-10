@@ -28,7 +28,7 @@ export class CarListComponent implements OnInit, AfterViewInit {
   @ViewChild(ListComponent, { static: true }) listComponent: ListComponent;
 
   private addFunction: Function = () => this.router.navigate(['cars/add']);
-  private editFunction: Function = (c: Car) => this.router.navigate(['cars/edit/' + c.id]);
+  private editFunction: Function = (c: Car) => this.router.navigate(['cars/edit/' + c.id])
   private deleteFunction: Function = (c: Commons) => this.deleteCar(c);
 
   ngOnInit() {

@@ -2,7 +2,7 @@
   <table class="table table-sm" id="job-table">
     <thead>
     <tr class="text-center">
-      <th><input type="checkbox" (click)="selectAll()" [(ngModel)]="isAllSelectionActive"></th>
+      <th class="selector-column"><input type="checkbox" (click)="selectAll()" [(ngModel)]="isAllSelectionActive"></th>
       <th *ngFor="let caption of captions">{{caption}}</th>
     </tr>
     </thead>
