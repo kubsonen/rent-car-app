@@ -41,4 +41,8 @@ public class EntityOrderService extends EntityCommon {
 
     private String currency;
 
+    @ManyToOne
+    @JoinColumn(name = "price_list_id")
+    private EntityPriceList priceList;
+
 }

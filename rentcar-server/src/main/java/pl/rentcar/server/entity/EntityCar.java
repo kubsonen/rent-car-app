@@ -37,4 +37,8 @@ public class EntityCar extends EntityCommon {
     @JoinColumn(name = "car_id")
     private List<EntityRepair> repairs;
 
+    @ManyToOne
+    @JoinColumn(name = "price_list_id")
+    private EntityPriceList defaultPriceList;
+
 }
