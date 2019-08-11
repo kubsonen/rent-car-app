@@ -114,7 +114,7 @@ public class ServiceModel {
                         referenceEntitySetter.invoke(referenceEntity, modelGetter.invoke(model));
 
                     } else {
-
+                        System.out.println("Metoda: " + SETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
                         Method entitySetter = entityMethods.get(SETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
                         entitySetter.invoke(entity, modelGetter.invoke(model));
 

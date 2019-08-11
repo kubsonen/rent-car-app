@@ -1,0 +1,45 @@
+<div class="card my-2">
+  <div class="card-header">
+    <h5 class="m-0" *ngIf="mode == formMode.ADD">Add new price list</h5>
+    <h5 class="m-0" *ngIf="mode == formMode.EDIT">Edit price list</h5>
+  </div>
+  <div class="card-body">
+    <form *ngIf="!!model">
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="nameInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="descInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="currencyInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="perHourInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="perDayInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="perWeekInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="perMonthInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

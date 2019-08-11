@@ -18,8 +18,9 @@ import java.util.Set;
 @Table(name = "price_list")
 public class EntityPriceList extends EntityCommon {
 
-    private String priceListName;
-    private String priceListDescription;
+    private String name;
+    private String description;
+    private String currency;
 
     @OneToMany
     @JoinColumn(name = "price_list_id")

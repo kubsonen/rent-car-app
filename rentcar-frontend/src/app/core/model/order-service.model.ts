@@ -44,4 +44,5 @@ export class OrderServiceModel extends Common {
   fuel: number;
   price: number;
   currency: string;
+  priceListId: string;
 }

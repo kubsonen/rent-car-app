@@ -10,6 +10,7 @@ import java.util.UUID;
 public class ModelCar implements CrudModel {
     @EntityDisableCopy
     private UUID id;
+    private UUID defaultPriceListId;
     private String brand;
     private String model;
     private String type;

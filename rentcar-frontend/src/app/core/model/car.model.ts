@@ -10,5 +10,6 @@ export class Car extends Common {
   productionDate: string;
   registerDate: string;
   vin: string;
+  defaultPriceListId: string;
 }
 

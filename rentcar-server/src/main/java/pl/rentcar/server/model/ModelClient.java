@@ -16,17 +16,11 @@ public class ModelClient implements CrudModel{
     @NotBlank
     private String fullName;
     @Email
-    @NotBlank
     private String email;
-    @NotBlank
     private String nip;
-    @NotBlank
     private String phoneNumber;
-    @NotBlank
     private String address;
-    @NotBlank
     private String country;
-    @NotBlank
     private String postalCode;
     private String language;
 }

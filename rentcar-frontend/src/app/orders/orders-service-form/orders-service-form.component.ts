@@ -7,6 +7,7 @@ import {OrderServiceService} from '../../core/service/order-service.service';
 import {InputField} from '../../layout/input-field/input-field.component';
 import {CarService} from '../../core/service/car.service';
 import {FormMode} from '../../layout/form/form-mode.enum';
+import {PriceListService} from '../../core/service/price-list.service';
 
 @Component({
   selector: 'app-orders-service-form',
@@ -23,14 +24,17 @@ export class OrdersServiceFormComponent implements OnInit, ModalFormComponent {
   private fuelInput: InputField = InputField.inputText('Fuel', 'fuel');
   private carInput: InputField;
   private currencyInput: InputField;
+  private priceListInput: InputField;
 
   constructor(private translateService: TranslateService,
               private bundlePropertyService: BundlePropertyService,
               private orderServiceService: OrderServiceService,
-              private carService: CarService) {
+              private carService: CarService,
+              private priceListService: PriceListService) {
 
     this.carInput = InputField.inputCombo('Car', 'carId', carService);
     this.currencyInput = InputField.inputComboConst('Currency', 'currency', bundlePropertyService, 'Currency');
+    this.priceListInput = InputField.inputCombo('Price list', 'priceListId', priceListService);
 
   }
 

@@ -147,7 +147,7 @@ export class InputFieldComponent implements OnInit {
   ngOnInit() {
     if (this.inputField.type === InputType.COMBO) {
       const uuid = this.model[this.inputField.field];
-      if (uuid !== undefined) {
+      if (uuid) {
         this.inputField.comboboxService.getByIdComboItem(uuid)
           .subscribe(cbi => {
             this.items.push(cbi);

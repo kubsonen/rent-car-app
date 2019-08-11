@@ -8,6 +8,7 @@ import {BundlePropertyService} from '../../core/service/bundle-property.service'
 import {TranslateService} from '@ngx-translate/core';
 import {FormMode} from '../../layout/form/form-mode.enum';
 import {InputField} from '../../layout/input-field/input-field.component';
+import {PriceListService} from '../../core/service/price-list.service';
 
 @Component({
   selector: 'app-car-form',
@@ -27,12 +28,14 @@ export class CarFormComponent extends FormLayout<Car> implements OnInit {
   private typeInput: InputField;
   private brandInput: InputField;
   private fuelTypeInput: InputField;
+  private defaultPriceListInput: InputField;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               public topbarService: TopbarService,
               private carService: CarService,
-              private bundlePropertyService: BundlePropertyService) {
+              private bundlePropertyService: BundlePropertyService,
+              private priceListService: PriceListService) {
 
     super(topbarService, carService, () => {
       this.router.navigate(['cars']);
@@ -41,6 +44,7 @@ export class CarFormComponent extends FormLayout<Car> implements OnInit {
     this.typeInput = InputField.inputComboConst('Type', 'type', bundlePropertyService, 'CarType');
     this.brandInput = InputField.inputComboConst('Brand', 'brand', bundlePropertyService, 'Brands');
     this.fuelTypeInput = InputField.inputComboConst('Fuel', 'fuelType', bundlePropertyService, 'FuelType');
+    this.defaultPriceListInput = InputField.inputCombo('Price list', 'defaultPriceListId', priceListService);
 
     this.route.params.subscribe(p => {
       this.uid = p.uid;

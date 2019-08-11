@@ -16,18 +16,14 @@ public class ModelOrderService implements CrudModel{
     @NotNull
     private UUID rentOrderId;
     private UUID carId;
+    private UUID priceListId;
     @NotNull
     private Date startRent;
     @NotNull
     private Date endRent;
-    @NotNull
     private Double startMileage;
-    @NotNull
     private Double endMileage;
-    @NotNull
     private Double fuel;
-    @NotNull
     private BigDecimal price;
-    @NotNull
     private String currency;
 }
