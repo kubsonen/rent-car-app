@@ -1,0 +1,35 @@
+<div class="card my-2">
+  <div class="card-header">
+    <h5 class="m-0" *ngIf="mode == formMode.ADD">Add new refuelling</h5>
+    <h5 class="m-0" *ngIf="mode == formMode.EDIT">Edit refuelling</h5>
+  </div>
+  <div class="card-body">
+    <form *ngIf="!!model">
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="refuellingCarInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="refuellingDateInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="currencyInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="priceInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="mileageInput" [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

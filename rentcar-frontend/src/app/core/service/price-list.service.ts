@@ -12,7 +12,7 @@ import {map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class PriceListService extends ResourceService<PriceList> implements ComboBoxService{
+export class PriceListService extends ResourceService<PriceList> implements ComboBoxService {
 
   constructor(httpClient: HttpClient) {
     super(httpClient, 'priceList');

@@ -6,9 +6,6 @@ import {TableResponse} from '../model/table-response.model';
 import {Commons} from '../model/commons.model';
 import {CrudService} from '../abstract/crud-service';
 import {Search} from '../model/search.model';
-import {map} from 'rxjs/operators';
-import {Client} from '../model/client.model';
-import {InputComboItem} from '../../layout/input-field/input-field.component';
 
 export class HttpOptions {
   headers: HttpHeaders;

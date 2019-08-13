@@ -9,7 +9,8 @@ const routes: Routes = [
   {path: 'authority', loadChildren: () => import('./authority/authority.module').then(m => m.AuthorityModule)},
   {path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)},
   {path: 'bundle', loadChildren: () => import('./bundle/bundle.module').then(m => m.BundleModule)},
-  {path: 'priceList', loadChildren: () => import('./price-list/price-list.module').then(m => m.PriceListModule)}
+  {path: 'priceList', loadChildren: () => import('./price-list/price-list.module').then(m => m.PriceListModule)},
+  {path: 'refuelling', loadChildren: () => import('./refuelling/refuelling.module').then(m => m.RefuellingModule)}
 ];
 
 @NgModule({

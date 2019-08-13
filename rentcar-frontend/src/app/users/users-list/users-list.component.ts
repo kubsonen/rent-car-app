@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Client} from '../../core/model/client.model';
 import {Router} from '@angular/router';
-import {ClientsService} from '../../core/service/clients.service';
 import {ListComponent} from '../../layout/list/list.component';
 import {UserService} from '../../core/service/user.service';
 

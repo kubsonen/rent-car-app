@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -16,9 +18,14 @@ import javax.persistence.Table;
 @Table(name = "refuelling")
 public class EntityRefuelling extends EntityCommon {
 
-    private String refuellingDate;
-
+    private Date refuellingDate;
     private Double mileage;
+    private String currency;
+    private BigDecimal price;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private EntityCar refuelCar;
 
     @ManyToOne
     @JoinColumn(name = "invoice_id")

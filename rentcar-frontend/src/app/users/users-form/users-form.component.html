@@ -1,17 +1,32 @@
-<div class="card my-2">
+<div class="card my-2" *ngIf="mode == formMode.ADD">
   <div class="card-header">
-    <h5 class="m-0" *ngIf="mode == formMode.ADD">Add new user</h5>
+    <h5 class="m-0">Add new user</h5>
   </div>
   <div class="card-body">
-    <form *ngIf="!!user">
+    <form *ngIf="!!modelAdd">
       <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <app-valid-input [tittle]="'User name'" [field]="'username'" [model]="user" [error]="error"></app-valid-input>
+        <div class="col-md-12">
+          <app-input-field [inputField]="usernameInput" [model]="modelAdd" [error]="error" [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-12 mb-3">
-          <app-valid-input [tittle]="'Password'" [field]="'password'" [model]="user" [error]="error"></app-valid-input>
+        <div class="col-md-12">
+          <app-input-field [inputField]="passwordInput" [model]="modelAdd" [error]="error" [loaded]="isLoaded"></app-input-field>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card my-2" *ngIf="mode == formMode.EDIT">
+  <div class="card-header">
+    <h5 class="m-0">Edit user</h5>
+  </div>
+  <div class="card-body">
+    <form *ngIf="!!model">
+      <div class="form-row">
+        <div class="col-md-12">
+          <app-input-field [inputField]="usernameInput " [model]="model" [error]="error" [loaded]="isLoaded"></app-input-field>
         </div>
       </div>
     </form>

@@ -3,12 +3,12 @@ import {TableRequest} from '../../core/model/table-request.model';
 import {TableResponse} from '../../core/model/table-response.model';
 import {TopbarActions} from '../topbar/topbar.component';
 import {PaginationInfo} from '../../core/model/pagination-info.model';
-import {CrudService} from '../../core/abstract/crud-service';
 import {TopbarService} from '../topbar/topbar.service';
 import {Common} from '../../core/model/common.model';
 import {ModalService} from '../modal/modal.service';
 import {Modal} from '../modal/modal.model';
 import {Commons} from '../../core/model/commons.model';
+import {PageService} from '../../core/abstract/page-service';
 
 @Component({
   selector: 'app-list',
@@ -18,7 +18,7 @@ import {Commons} from '../../core/model/commons.model';
 export class ListComponent implements OnInit {
 
   @Input() addFunction: Function;
-  @Input() crudService: CrudService<any>;
+  @Input() crudService: PageService<any>;
   @Input() crudEdit: Function;
   @Input() crudDelete: Function;
   @Input() captions: string[];

@@ -5,7 +5,7 @@ import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
 import {NgbTime} from '@ng-bootstrap/ng-bootstrap/timepicker/ngb-time';
 import {Search} from '../../core/model/search.model';
 
-export enum InputType {TEXT, TEXT_AREA, INTEGER, DECIMAL, DATE, COMBO, COMBO_CONST, CHECK, RADIO}
+export enum InputType {TEXT, TEXT_AREA, INTEGER, DECIMAL, DATE, PASSWORD, COMBO, COMBO_CONST, CHECK, RADIO}
 
 export class InputField {
 
@@ -43,6 +43,10 @@ export class InputField {
   /* Static factories for each custom form fields */
   public static inputText(label: string, field: string): InputField {
     return this.inputCommon(InputType.TEXT, label, field);
+  }
+
+  public static inputPassword(label: string, field: string): InputField {
+    return this.inputCommon(InputType.PASSWORD, label, field);
   }
 
   public static inputTextArea(label: string, field: string, rows: number): InputField {

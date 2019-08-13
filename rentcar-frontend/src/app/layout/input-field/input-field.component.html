@@ -12,6 +12,14 @@
            [ngModelOptions]="{standalone: true}">
   </div>
 
+  <!--  Password field -->
+  <div
+    *ngIf="inputField.type == inputType.PASSWORD">
+    <input type="password" class="form-control form-control-sm" *ngIf="!!model"
+           [ngClass]="{'is-invalid': !!error && !!error[inputField.field]}" [(ngModel)]="model[inputField.field]"
+           [ngModelOptions]="{standalone: true}">
+  </div>
+
   <!-- Text area fields -->
   <div *ngIf="inputField.type == inputType.TEXT_AREA">
     <textarea class="form-control form-control-sm" rows="{{inputField.textAreaRows}}"

@@ -2,23 +2,23 @@ import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 import {User} from '../model/user.model';
+import {ResourceService} from './resource.service';
+import {PriceList} from '../model/price-list.model';
+import {HttpClient} from '@angular/common/http';
+import {SeparateResourceService} from './separate-resource.service';
+import {UserAdd} from '../model/user-add.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService extends SeparateResourceService<UserAdd, User> {
 
-  private readonly userUrl: string = 'user';
-
-  constructor(private api: ApiService) {
+  constructor(httpClient: HttpClient) {
+    super(httpClient, 'user');
   }
 
-  createUser(client: User): Observable<User> {
-    return this.api.post(this.userUrl, client);
-  }
-
-  updateUser(client: User): Observable<User> {
-    return this.api.put(this.userUrl, client);
+  addInstance(): UserAdd {
+    return new UserAdd();
   }
 
 }

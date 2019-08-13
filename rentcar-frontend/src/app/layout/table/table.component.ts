@@ -25,7 +25,6 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Init table.');
   }
 
   unselectAll() {
