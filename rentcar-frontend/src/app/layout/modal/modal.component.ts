@@ -1,65 +1,53 @@
 import {
   ChangeDetectorRef,
   Component,
-  ComponentFactoryResolver,
-  NgZone,
-  OnDestroy,
-  OnInit,
-  ViewChild} from '@angular/core';
-import {ModalService} from './modal.service';
-import {Subscription} from 'rxjs';
-import {Modal, ModalMode} from './modal.model';
+  ComponentFactoryResolver, EventEmitter, Input,
+  OnInit, Output,
+  ViewChild
+} from '@angular/core';
+import {ModalMode} from './modal.model';
 import {ModalDirective} from './modal.directive';
 import {ModalFormComponent} from './modal-form.component';
+import {ModalStructure} from '../modal-multiple/modal-multiple.component';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent implements OnInit, OnDestroy {
+export class ModalComponent implements OnInit {
 
   @ViewChild(ModalDirective, {static: false}) modalDirective: ModalDirective;
-  modalSubscription: Subscription;
+  @Input() modalStructure: ModalStructure;
+  @Output() closeModalAction: EventEmitter<ModalStructure> = new EventEmitter();
+
+  // Fields
   mode: any = ModalMode;
   active: boolean;
   kind: string;
-  modal: Modal;
   tittle: String;
   saveForm: Function;
   larger;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private modalService: ModalService,
-              private changeDetector: ChangeDetectorRef,
-              private ngZone: NgZone) {
-
-
-    this.modalSubscription = this.modalService.getModal().subscribe(m => {
-      this.ngZone.run(() => {
-        this.setModal(m);
-      });
-    });
+              private changeDetector: ChangeDetectorRef) {
   }
 
   closeModal() {
-    this.active = false;
-    this.kind = 'close';
+    this.closeModalAction.emit(this.modalStructure);
   }
 
-  ngOnInit() {}
-
-  ngOnDestroy(): void {
-    this.modalSubscription.unsubscribe();
+  ngOnInit() {
+    this.setModal(this.modalStructure);
   }
 
-  setModal(modal: Modal) {
-    this.modal = modal;
+  setModal(modalStructure: ModalStructure) {
+    const modal = modalStructure.modal;
     this.active = true;
     this.larger = modal.large;
     this.changeDetector.detectChanges();
     this.clearComponent();
-    switch (this.modal.mode) {
+    switch (modal.mode) {
       case ModalMode.ERROR:
         this.tittle = 'ERROR';
         break;
@@ -81,12 +69,12 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   loadComponent() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.modal.formComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.modalStructure.modal.formComponent);
     const componentRef = this.modalDirective.viewContainerRef.createComponent(componentFactory);
     (<ModalFormComponent>componentRef.instance).closeModal = () => this.closeModal();
-    (<ModalFormComponent>componentRef.instance).afterSave = this.modal.executeOnSave;
-    (<ModalFormComponent>componentRef.instance).data = this.modal.data;
-    (<ModalFormComponent>componentRef.instance).dataService = this.modal.dataService;
+    (<ModalFormComponent>componentRef.instance).afterSave = this.modalStructure.modal.executeOnSave;
+    (<ModalFormComponent>componentRef.instance).data = this.modalStructure.modal.data;
+    (<ModalFormComponent>componentRef.instance).dataService = this.modalStructure.modal.dataService;
     this.saveForm = () => {
       (<ModalFormComponent>componentRef.instance).saveFunction();
     };

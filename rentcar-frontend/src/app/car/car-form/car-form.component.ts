@@ -5,7 +5,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TopbarService} from '../../layout/topbar/topbar.service';
 import {CarService} from '../../core/service/car.service';
 import {BundlePropertyService} from '../../core/service/bundle-property.service';
-import {TranslateService} from '@ngx-translate/core';
 import {FormMode} from '../../layout/form/form-mode.enum';
 import {InputField} from '../../layout/input-field/input-field.component';
 import {PriceListService} from '../../core/service/price-list.service';

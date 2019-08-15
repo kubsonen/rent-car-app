@@ -20,12 +20,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DateTimePickerComponent} from './date-time-picker/date-time-picker.component';
 import { InputFieldComponent } from './input-field/input-field.component';
 import { TableColumnConfigComponent } from './table-column-config/table-column-config.component';
+import { ModalMultipleComponent } from './modal-multiple/modal-multiple.component';
 
 @NgModule({
   entryComponents: [TableColumnConfigComponent],
   declarations: [SidebarComponent, TopbarComponent, TableComponent, ModalComponent, ValidInputComponent,
     FormComponent, ListComponent, ModalDirective, ComboBoxComponent, ValidTextareaComponent, ComboBoxConstantsComponent,
-    DateTimePickerComponent, InputFieldComponent, TableColumnConfigComponent],
+    DateTimePickerComponent, InputFieldComponent, TableColumnConfigComponent, ModalMultipleComponent],
   exports: [
     SidebarComponent,
     TopbarComponent,
@@ -37,7 +38,8 @@ import { TableColumnConfigComponent } from './table-column-config/table-column-c
     ValidTextareaComponent,
     ComboBoxConstantsComponent,
     DateTimePickerComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    ModalMultipleComponent
   ],
   imports: [
     CommonModule,

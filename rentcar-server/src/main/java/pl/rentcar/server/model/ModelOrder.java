@@ -15,7 +15,6 @@ public class ModelOrder implements CrudModel{
     private String orderNumber;
     @NotNull
     private UUID clientId;
-    @EntityDisableCopy
     private String clientUniqueName;
     private Date orderDate;
     private String comments;

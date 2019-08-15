@@ -2,7 +2,9 @@ package pl.rentcar.server.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.rentcar.server.util.ConstantValue;
 import pl.rentcar.server.util.EntityDisableCopy;
 
 import javax.persistence.EntityManager;
@@ -11,6 +13,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -22,10 +25,13 @@ public class ServiceModel {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
+    private ServiceBundleProperty serviceBundleProperty;
+
     private static final String GETTER_PREFIX = "get";
     private static final String SETTER_PREFIX = "set";
 
-    public void copyFromModel(Object model, Object entity) throws InvocationTargetException, IllegalAccessException, InstantiationException {
+    public void copyFromModel(Object model, Object entity) throws InvocationTargetException, IllegalAccessException {
 
         //Methods from model
         Map<String, Method> modelMethods = new HashMap<>();
@@ -39,6 +45,7 @@ public class ServiceModel {
         Map<String, Field> entityFields = new HashMap<>();
         for (Field field : entity.getClass().getDeclaredFields()) entityFields.put(field.getName(), field);
 
+        ITERATE_EACH_MODEL_FIELD:
         for (Field field : model.getClass().getDeclaredFields()) {
 
             //Get the fields from objects
@@ -65,60 +72,25 @@ public class ServiceModel {
                     }
                 } else {
 
-                    //Process while field is an OneToOne relation
-                    //Check in entity exists field name which is a start string in model field name
-                    boolean existsModelFieldNameStartsWithEntityFieldName = false;
-                    String foundedEntityFieldName = null;
-
-                    ENTITY_FIELD_NAME_ITERATE:
-                    for (String entityFieldName : entityFields.keySet()) {
-                        if (fieldName.startsWith(entityFieldName) && !fieldName.equals(entityFieldName)) {
-                            existsModelFieldNameStartsWithEntityFieldName = true;
-                            foundedEntityFieldName = entityFieldName;
-                            break ENTITY_FIELD_NAME_ITERATE;
-                        }
-                    }
+                    //Skip reference entity fields (not id)
+                    for (String entityFieldName : entityFields.keySet())
+                        if (fieldName.startsWith(entityFieldName) && !fieldName.equals(entityFieldName))
+                            continue ITERATE_EACH_MODEL_FIELD;
 
                     Method modelGetter = modelMethods.get(GETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+                    Object modelFieldValue = modelGetter.invoke(model);
 
-                    //Set values for reference object in entity
-                    if (existsModelFieldNameStartsWithEntityFieldName) {
+                    if (modelFieldValue != null && field.isAnnotationPresent(ConstantValue.class)) {
+                        ConstantValue constantValue = field.getAnnotation(ConstantValue.class);
+                        String group = constantValue.group();
 
-                        //Get the entity field (object / reference model)
-                        Method entityGetter = entityMethods.get(GETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + foundedEntityFieldName.substring(1));
-                        Object referenceEntity = entityGetter.invoke(entity);
-
-                        if (referenceEntity == null) {
-
-                            //Get entity field to create a new instance
-                            Class<?> entityReferenceModelType = entityFields.get(foundedEntityFieldName).getType();
-                            Object newModelEntityInstance = entityReferenceModelType.newInstance();
-
-
-                            Method entitySetter = entityMethods.
-                                    get(SETTER_PREFIX + foundedEntityFieldName.substring(0, 1).toUpperCase() + foundedEntityFieldName.substring(1));
-                            entitySetter.invoke(entity, newModelEntityInstance);
-                            referenceEntity = entityGetter.invoke(entity);
-
-                        }
-
-                        //Get reference entity methods
-                        Map<String, Method> referenceEntityMethods = new HashMap<>();
-                        for (Method method : referenceEntity.getClass().getDeclaredMethods()) referenceEntityMethods.put(method.getName(), method);
-
-                        //Set model value to the entity reference model
-                        //The rest of the model field name
-                        String referenceEntityFieldName = fieldName.substring(foundedEntityFieldName.length());
-                        Method referenceEntitySetter =
-                                referenceEntityMethods.get(SETTER_PREFIX + referenceEntityFieldName.substring(0, 1).toUpperCase() + referenceEntityFieldName.substring(1));
-                        referenceEntitySetter.invoke(referenceEntity, modelGetter.invoke(model));
-
-                    } else {
-                        System.out.println("Metoda: " + SETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
-                        Method entitySetter = entityMethods.get(SETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
-                        entitySetter.invoke(entity, modelGetter.invoke(model));
-
+                        List<String> constants = serviceBundleProperty.getConstantsValues(group);
+                        if (constants == null || constants.isEmpty() || !constants.contains(modelFieldValue))
+                            throw new RuntimeException("Constant not found exception.");
                     }
+
+                    Method entitySetter = entityMethods.get(SETTER_PREFIX + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1));
+                    entitySetter.invoke(entity, modelFieldValue);
                 }
             }
         }

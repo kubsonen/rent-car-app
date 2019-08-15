@@ -1,6 +1,7 @@
 package pl.rentcar.server.model;
 
 import lombok.Value;
+import pl.rentcar.server.util.ConstantValue;
 import pl.rentcar.server.util.EntityDisableCopy;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ public class ModelCar implements CrudModel {
     @EntityDisableCopy
     private UUID id;
     private UUID defaultPriceListId;
+    @ConstantValue(group = "Brands")
     private String brand;
     private String model;
     private String type;
