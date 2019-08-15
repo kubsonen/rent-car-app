@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import pl.rentcar.server.model.CrudModel;
 import pl.rentcar.server.entity.EntityCommon;
+import pl.rentcar.server.model.ModelTableColumnConfig;
 import pl.rentcar.server.model.ModelTableResponse;
 import pl.rentcar.server.repository.RepositoryCommon;
 
@@ -18,6 +19,9 @@ public class CrudServiceImplementation<ADD, PROJECTION extends CrudModel, E exte
 
     @Autowired
     protected ServiceModel serviceModel;
+
+    @Autowired
+    protected ServiceTableColumn serviceTableColumn;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
@@ -68,5 +72,26 @@ public class CrudServiceImplementation<ADD, PROJECTION extends CrudModel, E exte
     @Transactional
     public void deleteModels(List<UUID> uuids) throws Throwable {
         for(UUID id: uuids) deleteModel(id);
+    }
+
+    private Class<PROJECTION> getProjectionClass() {
+        Type type = getClass().getGenericSuperclass();
+        ParameterizedType parameterizedType = (ParameterizedType) type;
+        return  (Class<PROJECTION>) parameterizedType.getActualTypeArguments()[1];
+    }
+
+    @Override
+    public List<String> getVisibleFieldsForTable(String tableId) {
+        return serviceTableColumn.getVisibleFieldsForTable(getProjectionClass(), tableId);
+    }
+
+    @Override
+    public void saveTableColumnsConfig(String tableId, List<ModelTableColumnConfig> tableColumnsConfig) {
+        serviceTableColumn.saveTableColumnsConfig(getProjectionClass(), tableId, tableColumnsConfig);
+    }
+
+    @Override
+    public List<ModelTableColumnConfig> getTableColumnsConfig(String tableId) {
+        return serviceTableColumn.getTableColumnsConfig(getProjectionClass(), tableId);
     }
 }

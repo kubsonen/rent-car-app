@@ -41,6 +41,7 @@ export class OrdersServiceFormComponent implements OnInit, ModalFormComponent {
   loaded = false;
   orderService: OrderServiceModel;
   data: OrderOrderServiceLink;
+  dataService: any;
   afterSave: Function;
   closeModal: Function;
   error: any;

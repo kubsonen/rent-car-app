@@ -12,6 +12,7 @@ export class TopbarActions {
   previous: Function;
   next: Function;
   filter: Function;
+  tablePreferences: () => void;
 
   static formActions(save: Function): TopbarActions {
     const ta: TopbarActions = new TopbarActions();
@@ -39,6 +40,10 @@ export class TopbarActions {
     ta.add = add;
     ta.delete = del;
     return ta;
+  }
+
+  public setTablePreferences(action: () => void): void {
+    this.tablePreferences = action;
   }
 
 }

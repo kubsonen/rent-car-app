@@ -20,6 +20,7 @@ export class BundleGroupFormComponent implements OnInit, ModalFormComponent {
   afterSave: Function;
   mode: FormMode;
   data: any;
+  dataService: any;
 
   ngOnInit() {
     this.bundleGroup = new BundleGroup();

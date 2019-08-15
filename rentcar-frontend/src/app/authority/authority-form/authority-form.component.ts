@@ -19,6 +19,7 @@ export class AuthorityFormComponent implements OnInit, ModalFormComponent {
   private error: any;
   mode: FormMode;
   data: any;
+  dataService: any;
 
   ngOnInit() {
     this.authority = new Authority();

@@ -6,6 +6,9 @@ import {TableResponse} from '../model/table-response.model';
 import {Commons} from '../model/commons.model';
 import {CrudService} from '../abstract/crud-service';
 import {Search} from '../model/search.model';
+import {TableConfig} from '../model/table-config.model';
+import {TableColumn} from '../model/table-column.model';
+import {map} from 'rxjs/operators';
 
 export class HttpOptions {
   headers: HttpHeaders;
@@ -56,6 +59,34 @@ export class ResourceService<R extends Common> implements CrudService<R> {
     const headers: HttpOptions = new HttpOptions();
     headers.body = JSON.stringify(ids);
     return this.httpClient.delete(this.resourceApiPrefix + this.endpoint, headers);
+  }
+
+  getTableConfig(tableId: string) {
+    return this.httpClient.get<TableConfig[]>(this.resourceApiPrefix + this.endpoint + '/tableColumnConfig/' + tableId, new HttpOptions());
+  }
+
+  saveTableConfig(tableId: string, items: TableConfig[]): Observable<any> {
+    return this.httpClient.post<any>(this.resourceApiPrefix + this.endpoint +
+      '/tableColumnConfig/' + tableId, JSON.stringify(items), new HttpOptions());
+  }
+
+  getTableFields(tableId: string): Observable<TableColumn[]> {
+    return this.httpClient.get<string[]>(this.resourceApiPrefix + this.endpoint + '/tableFields/' + tableId, new HttpOptions())
+      .pipe(map(ss => ss.map(s => new TableColumn(this.defaultCaption(s), s))));
+  }
+
+  private defaultCaption(fieldName: string): string {
+
+    let caption = '';
+    const letterArray: string[] = Array.from(fieldName);
+    letterArray.forEach(letter => {
+      if (letter === letter.toUpperCase()) {
+        caption += ' ';
+      }
+      caption += letter.toUpperCase();
+    })
+
+    return caption;
   }
 
 }

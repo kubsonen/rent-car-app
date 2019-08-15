@@ -86,6 +86,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     (<ModalFormComponent>componentRef.instance).closeModal = () => this.closeModal();
     (<ModalFormComponent>componentRef.instance).afterSave = this.modal.executeOnSave;
     (<ModalFormComponent>componentRef.instance).data = this.modal.data;
+    (<ModalFormComponent>componentRef.instance).dataService = this.modal.dataService;
     this.saveForm = () => {
       (<ModalFormComponent>componentRef.instance).saveFunction();
     };

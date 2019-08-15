@@ -5,12 +5,15 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import pl.rentcar.server.model.CrudModel;
 import pl.rentcar.server.model.ModelCommons;
+import pl.rentcar.server.model.ModelTableColumnConfig;
 import pl.rentcar.server.model.ModelTableResponse;
 import pl.rentcar.server.service.CrudService;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public abstract class CrudController<ADD, M extends CrudModel> {
 
@@ -56,4 +59,18 @@ public abstract class CrudController<ADD, M extends CrudModel> {
         crudService.deleteModels(modelCommons.getIds());
     }
 
+    @GetMapping("/tableColumnConfig/{tableId}")
+    public List<ModelTableColumnConfig> getTableColumnsConfig(@PathVariable String tableId) {
+        return crudService.getTableColumnsConfig(tableId);
+    }
+
+    @PostMapping("/tableColumnConfig/{tableId}")
+    public void saveTableColumnsConfig(@PathVariable String tableId, @RequestBody ModelTableColumnConfig[] modelTableColumnConfigs) {
+        crudService.saveTableColumnsConfig(tableId, Arrays.stream(modelTableColumnConfigs).collect(Collectors.toList()));
+    }
+
+    @GetMapping("/tableFields/{tableId}")
+    public List<String> getTableFields(@PathVariable String tableId) {
+        return crudService.getVisibleFieldsForTable(tableId);
+    }
 }

@@ -1,0 +1,12 @@
+<ul class="list-group">
+  <li class="list-group-item" [ngClass]="{'active': item.dragOver}" *ngFor="let item of items"
+      [draggable]="true"
+      (dragover)="dragOver($event, item)"
+      (dragstart)="startDrag(item)"
+      (drop)="drop(item)">
+    <div class="d-flex justify-content-between align-items-center">
+      {{item.field}}
+      <input type="checkbox" [(ngModel)]="item.visible">
+    </div>
+  </li>
+</ul>

@@ -2,7 +2,6 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {TopbarService} from '../../layout/topbar/topbar.service';
 import {TopbarActions} from '../../layout/topbar/topbar.component';
 import {CarService} from '../../core/service/car.service';
-import {Order} from '../../core/model/order.model';
 import {Commons} from '../../core/model/commons.model';
 import {Router} from '@angular/router';
 import {ListComponent} from '../../layout/list/list.component';

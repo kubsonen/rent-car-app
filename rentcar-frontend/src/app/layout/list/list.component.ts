@@ -9,6 +9,7 @@ import {ModalService} from '../modal/modal.service';
 import {Modal} from '../modal/modal.model';
 import {Commons} from '../../core/model/commons.model';
 import {PageService} from '../../core/abstract/page-service';
+import {TableColumnConfigComponent} from '../table-column-config/table-column-config.component';
 
 @Component({
   selector: 'app-list',
@@ -17,12 +18,15 @@ import {PageService} from '../../core/abstract/page-service';
 })
 export class ListComponent implements OnInit {
 
+  @Input() listId: string;
   @Input() addFunction: Function;
   @Input() crudService: PageService<any>;
   @Input() crudEdit: Function;
   @Input() crudDelete: Function;
-  @Input() captions: string[];
-  @Input() columns: string[];
+
+  userCaptions: string[] = [];
+  userColumns: string[] = [];
+
 
   private tableRequest: TableRequest;
   private tableResponse: TableResponse<Common>;
@@ -43,8 +47,17 @@ export class ListComponent implements OnInit {
     this.editFunction = () => {
       this.editObject();
     };
-  }
 
+    if (this.listId) {
+      this.crudService.getTableFields(this.listId).subscribe(fields => {
+        fields.forEach(value => {
+          this.userCaptions.push(value.caption);
+          this.userColumns.push(value.field);
+        });
+      });
+    }
+
+  }
 
   initTopbarActions() {
     const ta: TopbarActions = new TopbarActions();
@@ -54,6 +67,14 @@ export class ListComponent implements OnInit {
     ta.refresh = () => this.refreshTable();
     ta.previous = () => this.previousPage();
     ta.delete = () => this.deleteObject();
+
+    if (this.listId) {
+      ta.setTablePreferences(() => {
+        this.modal.setModal(Modal.modalFormWithService('Table config', 'Table config', TableColumnConfigComponent,
+          this.listId, this.crudService));
+      });
+    }
+
     this.topbarService.setAcions(ta);
   }
 

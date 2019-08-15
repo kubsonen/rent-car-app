@@ -12,6 +12,7 @@ export class Modal {
   private _saveFunction: Function;
   private _formComponent: Type<any>;
   private _data: any;
+  private _dataService: any;
   private _executeOnSave: Function;
   private _large: boolean;
 
@@ -34,6 +35,20 @@ export class Modal {
     modal._mode = ModalMode.DIALOG;
     modal._info = info;
     modal._saveFunction = agreeFunction;
+    return modal;
+  }
+
+  static modalFormLargeWithService(info: string, tittle: string, formComponent: Type<any>, data?: any, dataService?: any,
+                                   executeOnSave?: Function): Modal {
+    const modal: Modal = this.modalFormWithService(info, tittle, formComponent, data, dataService, executeOnSave);
+    modal.large = true;
+    return modal;
+  }
+
+  static modalFormWithService(info: string, tittle: string, formComponent: Type<any>, data?: any, dataService?: any,
+                              executeOnSave?: Function): Modal {
+    const modal: Modal = this.modalForm(info, tittle, formComponent, data, executeOnSave);
+    modal.dataService = dataService;
     return modal;
   }
 
@@ -117,5 +132,13 @@ export class Modal {
 
   set large(value: boolean) {
     this._large = value;
+  }
+
+  get dataService(): any {
+    return this._dataService;
+  }
+
+  set dataService(value: any) {
+    this._dataService = value;
   }
 }

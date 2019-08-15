@@ -14,6 +14,7 @@ export class AuthorityPrivilegeFormComponent implements OnInit, ModalFormCompone
 
   privilege: Privilege;
   data: any;
+  dataService: any;
   closeModal: Function;
   afterSave: Function;
   private error: any;

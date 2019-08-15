@@ -19,11 +19,13 @@ import {ComboBoxConstantsComponent} from './combo-box-constants/combo-box-consta
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DateTimePickerComponent} from './date-time-picker/date-time-picker.component';
 import { InputFieldComponent } from './input-field/input-field.component';
+import { TableColumnConfigComponent } from './table-column-config/table-column-config.component';
 
 @NgModule({
+  entryComponents: [TableColumnConfigComponent],
   declarations: [SidebarComponent, TopbarComponent, TableComponent, ModalComponent, ValidInputComponent,
     FormComponent, ListComponent, ModalDirective, ComboBoxComponent, ValidTextareaComponent, ComboBoxConstantsComponent,
-    DateTimePickerComponent, InputFieldComponent],
+    DateTimePickerComponent, InputFieldComponent, TableColumnConfigComponent],
   exports: [
     SidebarComponent,
     TopbarComponent,

@@ -1,16 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TopbarService} from '../../layout/topbar/topbar.service';
-import {ClientsService} from '../../core/service/clients.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Client} from '../../core/model/client.model';
-import {FormMode} from '../../layout/form/form-mode.enum';
 import {User} from '../../core/model/user.model';
 import {UserService} from '../../core/service/user.service';
-import {TopbarActions} from '../../layout/topbar/topbar.component';
-import {FormLayout} from '../../core/abstract/form-layout';
-import {PriceList} from '../../core/model/price-list.model';
-import {PriceListService} from '../../core/service/price-list.service';
-import {BundlePropertyService} from '../../core/service/bundle-property.service';
 import {SeparateFormLayout} from '../../core/abstract/separate-form-layout';
 import {UserAdd} from '../../core/model/user-add.model';
 import {InputField} from '../../layout/input-field/input-field.component';

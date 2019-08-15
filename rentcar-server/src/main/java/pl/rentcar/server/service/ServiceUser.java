@@ -97,7 +97,9 @@ public class ServiceUser extends CrudServiceImplementation<ModelUserAdd, ModelUs
     }
 
     public EntityUser getLoginUser() {
-        return (EntityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (o instanceof EntityUser) return (EntityUser) o;
+        return null;
     }
 
     public boolean loginUserHasPrivilege(String privilege) {

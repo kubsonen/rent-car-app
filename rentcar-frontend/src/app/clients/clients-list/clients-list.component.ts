@@ -17,8 +17,6 @@ export class ClientsListComponent implements OnInit, AfterViewInit {
               private clientService: ClientsService) {
   }
 
-  private captions: string[] = ['Unique name', 'Full name', 'Email'];
-  private columns: string[] = ['uniqueName', 'fullName', 'email'];
   private addFunction: Function = () => this.addClient();
   private editFunction: Function = (c: Client) => this.editClient(c);
 
