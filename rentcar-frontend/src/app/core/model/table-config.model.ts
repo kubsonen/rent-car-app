@@ -1,6 +1,7 @@
 export class TableConfig {
   private _dragOver: boolean;
   private _index: number;
+  private _caption: string;
   private _field: string;
   private _visible: boolean;
 
@@ -18,6 +19,14 @@ export class TableConfig {
 
   set index(value: number) {
     this._index = value;
+  }
+
+  get caption(): string {
+    return this._caption;
+  }
+
+  set caption(value: string) {
+    this._caption = value;
   }
 
   get field(): string {

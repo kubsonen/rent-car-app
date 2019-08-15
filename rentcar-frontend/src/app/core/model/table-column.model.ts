@@ -8,6 +8,20 @@ export class TableColumn {
     this._field = field;
   }
 
+  public static defaultCaption(fieldName: string): string {
+
+    let caption = '';
+    const letterArray: string[] = Array.from(fieldName);
+    letterArray.forEach(letter => {
+      if (letter === letter.toUpperCase()) {
+        caption += ' ';
+      }
+      caption += letter.toUpperCase();
+    });
+
+    return caption;
+  }
+
   get caption(): string {
     return this._caption;
   }

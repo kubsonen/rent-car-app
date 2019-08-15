@@ -5,7 +5,7 @@
       (dragstart)="startDrag(item)"
       (drop)="drop(item)">
     <div class="d-flex justify-content-between align-items-center">
-      {{item.field}}
+      {{item.caption}}
       <input type="checkbox" [(ngModel)]="item.visible">
     </div>
   </li>

@@ -64,7 +64,12 @@ export abstract class SeparateResourceService<ADD extends Common, P>
   }
 
   getTableConfig(tableId: string) {
-    return this.httpClient.get<TableConfig[]>(this.resourceApiPrefix + this.endpoint + '/tableColumnConfig/' + tableId, new HttpOptions());
+    return this.httpClient.get<TableConfig[]>(this.resourceApiPrefix + this.endpoint + '/tableColumnConfig/' + tableId, new HttpOptions())
+      .pipe(map(tcs => tcs.map(tc => {
+        tc.caption = TableColumn.defaultCaption(tc.field);
+        return tc;
+      })));
+
   }
 
   saveTableConfig(tableId: string, items: TableConfig[]): Observable<any> {
@@ -74,21 +79,8 @@ export abstract class SeparateResourceService<ADD extends Common, P>
 
   getTableFields(tableId: string): Observable<TableColumn[]> {
     return this.httpClient.get<string[]>(this.resourceApiPrefix + this.endpoint + '/tableFields/' + tableId, new HttpOptions())
-      .pipe(map(ss => ss.map(s => new TableColumn(this.defaultCaption(s), s))));
+      .pipe(map(ss => ss.map(s => new TableColumn(TableColumn.defaultCaption(s), s))));
   }
 
-  private defaultCaption(fieldName: string): string {
-
-    let caption = '';
-    const letterArray: string[] = Array.from(fieldName);
-    letterArray.forEach(letter => {
-      if (letter === letter.toUpperCase()) {
-        caption += ' ';
-      }
-      caption += letter.toUpperCase();
-    });
-
-    return caption;
-  }
 
 }
