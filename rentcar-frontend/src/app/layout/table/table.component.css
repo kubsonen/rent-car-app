@@ -25,9 +25,30 @@ th:after {
 }
 
 .highlight {
+  -moz-box-shadow:inset 0px 1px 0px 0px #DFEEFF;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #DFEEFF;
+  box-shadow:inset 0px 1px 0px 0px #DFEEFF;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #DFEEFF), color-stop(1, #9fcdff));
+  background:-moz-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
+  background:-webkit-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
+  background:-o-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
+  background:-ms-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
+  background:linear-gradient(to bottom, #DFEEFF 5%, #9fcdff 100%);
   background-color: #9fcdff;
 }
 
 .selector-column {
   min-width: 40px !important;
+}
+
+.left-column-border {
+  border-left: 1px solid #dee2e6;
+}
+
+.bottom-tbody-border {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.highlight > .left-column-border {
+  border-left: none;
 }

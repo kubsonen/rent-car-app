@@ -3,13 +3,13 @@
     <thead>
     <tr class="text-center">
       <th class="selector-column"><input type="checkbox" (click)="selectAll()" [(ngModel)]="isAllSelectionActive"></th>
-      <th *ngFor="let caption of captions">{{caption}}</th>
+      <th *ngFor="let caption of captions" class="left-column-border">{{caption}}</th>
     </tr>
     </thead>
-    <tbody class="tableBody" *ngIf="!!dataTable">
+    <tbody class="bottom-tbody-border" *ngIf="!!dataTable">
     <tr *ngFor="let row of dataTable.data" [ngClass]="{'highlight': row.selected == true}" (click)="selectSingle(row)" (dblclick)="doubleClick()">
       <td (click)="selectMultiple(row)" class="text-center"><input type="checkbox" [(ngModel)]="row.selected"></td>
-      <td *ngFor="let column of columns">{{row[column]}}</td>
+      <td *ngFor="let column of columns" class="left-column-border">{{row[column]}}</td>
     </tr>
     </tbody>
   </table>
