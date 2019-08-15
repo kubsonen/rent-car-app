@@ -40,11 +40,19 @@
     </div>
   </div>
 
-  <!-- Combo box fields -->
-  <div *ngIf="inputField.type == inputType.COMBO || inputField.type == inputType.COMBO_CONST">
+  <!-- Combo box -->
+  <div *ngIf="inputField.type == inputType.COMBO">
     <ng-select class="combo-box-small" [ngClass]="{'is-invalid': !!error && !!error[inputField.field]}"
                *ngIf="comboBoxLoaded" [items]="items" [(ngModel)]="model[inputField.field]"
                (search)="searchModels($event)" [searchFn]="customSearchFn"
+               [bindLabel]="'label'" [bindValue]="'value'">
+    </ng-select>
+  </div>
+
+  <!-- Combo box const -->
+  <div *ngIf="inputField.type == inputType.COMBO_CONST">
+    <ng-select class="combo-box-small" [ngClass]="{'is-invalid': !!error && !!error[inputField.field]}"
+               *ngIf="comboBoxLoaded" [items]="items" [(ngModel)]="model[inputField.field]"
                [bindLabel]="'label'" [bindValue]="'value'">
     </ng-select>
   </div>
