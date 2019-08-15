@@ -25,16 +25,14 @@ th:after {
 }
 
 .highlight {
-  -moz-box-shadow:inset 0px 1px 0px 0px #DFEEFF;
-  -webkit-box-shadow:inset 0px 1px 0px 0px #DFEEFF;
-  box-shadow:inset 0px 1px 0px 0px #DFEEFF;
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #DFEEFF), color-stop(1, #9fcdff));
-  background:-moz-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
-  background:-webkit-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
-  background:-o-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
-  background:-ms-linear-gradient(top, #DFEEFF 5%, #9fcdff 100%);
-  background:linear-gradient(to bottom, #DFEEFF 5%, #9fcdff 100%);
-  background-color: #9fcdff;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
+  background: -moz-linear-gradient(top, #79bbff 5%, #378de5 100%);
+  background: -webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
+  background: -o-linear-gradient(top, #79bbff 5%, #378de5 100%);
+  background: -ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
+  background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5', GradientType=0);
+  background-color: #79bbff;
 }
 
 .selector-column {
@@ -51,4 +49,8 @@ th:after {
 
 .highlight > .left-column-border {
   border-left: none;
+}
+
+.table-sm th, .table-sm td {
+  padding: 0.2rem 0.3rem;
 }
