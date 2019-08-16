@@ -8,9 +8,13 @@ export class ErrorService implements ErrorHandler {
   constructor(private modalService: ModalService) { }
 
   handleError(error: any): void {
-    console.log('Wystapił błąd.');
-    console.log(error);
-    this.modalService.setModal(Modal.modalError('Undefined error.'));
+    if (error.name && error.name === 'HttpErrorResponse') {
+      if (error.error && error.error.message) {
+        this.modalService.setModal(Modal.modalError(error.error.message));
+      } else {
+        this.modalService.setModal(Modal.modalError('Undefined server error.'));
+      }
+    }
   }
 
 }

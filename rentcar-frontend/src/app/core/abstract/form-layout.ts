@@ -31,7 +31,6 @@ export abstract class FormLayout<M extends Common> {
           this.mode = FormMode.EDIT;
           this.onSuccess();
         }, error => {
-          console.log(error.error);
           if (error.status === 406) {
             this.error = error.error;
           } else {

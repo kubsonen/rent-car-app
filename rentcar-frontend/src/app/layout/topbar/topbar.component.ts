@@ -21,7 +21,7 @@ export class TopbarActions {
   }
 
   static tabActions(refresh: Function, add: Function, del: Function): TopbarActions {
-    const  ta: TopbarActions = new TopbarActions();
+    const ta: TopbarActions = new TopbarActions();
     ta.add = add;
     ta.delete = del;
     ta.refresh = refresh;
@@ -29,7 +29,7 @@ export class TopbarActions {
   }
 
   static onlyRefresh(refresh: Function): TopbarActions {
-    const  ta: TopbarActions = new TopbarActions();
+    const ta: TopbarActions = new TopbarActions();
     ta.refresh = refresh;
     return ta;
   }
@@ -82,4 +82,5 @@ export class TopbarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription.unsubscribe();
     this.subscriptionPi.unsubscribe();
   }
+
 }

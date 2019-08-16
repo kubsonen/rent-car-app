@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import pl.rentcar.server.service.ServiceUser;
 
 @Configuration
@@ -24,8 +27,8 @@ public class ConfigurationSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
-//        http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().formLogin();
+//        http.cors().and().csrf().disable().authorizeRequests().anyRequest().authenticated().and().formLogin();
+        http.cors().and().csrf().disable().authorizeRequests().anyRequest().permitAll();
     }
 
     @Override
@@ -40,6 +43,14 @@ public class ConfigurationSecurity extends WebSecurityConfigurerAdapter {
         authenticationProvider.setUserDetailsService(serviceUser);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         return authenticationProvider;
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        UrlBasedCorsConfigurationSource source = new
+                UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        return source;
     }
 
 }

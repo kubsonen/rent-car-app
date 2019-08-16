@@ -46,7 +46,6 @@ export class ModalComponent implements OnInit {
     this.active = true;
     this.larger = modal.large;
     this.changeDetector.detectChanges();
-    this.clearComponent();
     switch (modal.mode) {
       case ModalMode.ERROR:
         this.tittle = 'ERROR';
@@ -62,10 +61,6 @@ export class ModalComponent implements OnInit {
         this.loadComponent();
         break;
     }
-  }
-
-  clearComponent() {
-    this.modalDirective.viewContainerRef.clear();
   }
 
   loadComponent() {

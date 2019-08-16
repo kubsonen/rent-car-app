@@ -8,6 +8,7 @@ export class Modal {
 
   private _mode: ModalMode;
   private _info: string;
+  private _additionalInfo: string;
   private _tittle: string;
   private _saveFunction: Function;
   private _formComponent: Type<any>;
@@ -20,6 +21,12 @@ export class Modal {
     const modal: Modal = new Modal();
     modal._mode = ModalMode.ERROR;
     modal._info = error;
+    return modal;
+  }
+
+  static modalErrorWithDesc(error: string, desc: string): Modal {
+    const modal: Modal = Modal.modalError(error);
+    modal._additionalInfo = desc;
     return modal;
   }
 
@@ -140,5 +147,13 @@ export class Modal {
 
   set dataService(value: any) {
     this._dataService = value;
+  }
+
+  get additionalInfo(): string {
+    return this._additionalInfo;
+  }
+
+  set additionalInfo(value: string) {
+    this._additionalInfo = value;
   }
 }

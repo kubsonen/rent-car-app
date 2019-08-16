@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -34,6 +35,7 @@ public class EntityUser extends EntityCommon implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (entityAuthority == null) return new ArrayList<>();
         return Arrays.asList(entityAuthority);
     }
 

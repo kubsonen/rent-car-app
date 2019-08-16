@@ -58,6 +58,7 @@ export abstract class SeparateFormLayout<ADD extends Common, P extends Common> {
 
   protected saveForm(): void {
     if (this.mode === FormMode.ADD) {
+      console.log(this.modelAdd);
       this.separateCrudService.create(this.modelAdd, '').subscribe(model => {
         this.model = model;
         this.mode = FormMode.EDIT;

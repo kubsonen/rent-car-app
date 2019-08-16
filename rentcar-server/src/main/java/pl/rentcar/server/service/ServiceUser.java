@@ -38,11 +38,21 @@ public class ServiceUser extends CrudServiceImplementation<ModelUserAdd, ModelUs
     private PasswordEncoder passwordEncoder;
 
     @Override
+    public ModelUser addModel(ModelUserAdd model) throws Throwable {
+        System.out.println(model.toString());
+        ModelUserAdd modelUserAdd =
+                new ModelUserAdd(null, model.getUsername(), passwordEncoder.encode(model.getPassword()));
+        return super.addModel(modelUserAdd);
+    }
+
+    @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         EntityUser entityUser = repositoryUsers.findByUsername(username);
         if (entityUser == null) throw new UsernameNotFoundException("User with that name not found.");
-        entityUser.getEntityAuthority().getPrivileges().size(); //Initialize privileges
+        EntityAuthority entityAuthority = entityUser.getEntityAuthority();
+        if (entityAuthority != null)
+            entityAuthority.getPrivileges().size(); //Initialize privileges
         return entityUser;
     }
 

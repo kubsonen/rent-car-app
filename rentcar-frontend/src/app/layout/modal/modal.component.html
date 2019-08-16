@@ -9,7 +9,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <ng-template appModal></ng-template>
+          <ng-template appModal *ngIf="modalStructure.modal.mode === mode.FORM"></ng-template>
+          <div *ngIf="modalStructure.modal.mode !== mode.FORM">
+            <p *ngIf="!!modalStructure.modal.info">{{modalStructure.modal.info}}</p>
+            <p *ngIf="!!modalStructure.modal.additionalInfo">{{modalStructure.modal.additionalInfo}}</p>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" *ngIf="modalStructure.modal.mode === mode.FORM" (click)="saveForm()">Save</button>

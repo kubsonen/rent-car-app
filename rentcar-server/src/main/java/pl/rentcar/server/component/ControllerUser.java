@@ -7,6 +7,7 @@ import pl.rentcar.server.model.ModelUser;
 import pl.rentcar.server.model.ModelUserAdd;
 import pl.rentcar.server.service.ServiceUser;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
