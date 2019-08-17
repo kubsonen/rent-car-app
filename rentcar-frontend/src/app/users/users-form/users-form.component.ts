@@ -31,6 +31,7 @@ export class UsersFormComponent extends SeparateFormLayout<UserAdd, User> implem
   }
 
   ngOnInit() {
+    this.onAddSuccessAction(() => this.router.navigate(['users']));
+    this.onEditSuccessAction(() => this.router.navigate(['users']));
   }
-
 }

@@ -13,16 +13,14 @@ import {Commons} from '../../core/model/commons.model';
 })
 export class OrdersListComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(ListComponent, { static: true }) listComponent: ListComponent;
+  @ViewChild(ListComponent, {static: true}) listComponent: ListComponent;
 
-  private captions: string[] = ['Order number', 'Client name'];
-  private columns: string[] = ['orderNumber', 'clientUniqueName'];
-  private addFunction: Function = () => this.addOrder();
-  private editFunction: Function = (o: Order) => this.editOrder(o);
-  private deleteFunction: Function = (c: Commons) => this.deleteOrder(c);
+  public addFunction: Function = () => this.addOrder();
+  public editFunction: Function = (o: Order) => this.editOrder(o);
+  public deleteFunction: Function = (c: Commons) => this.deleteOrder(c);
 
-  constructor(private topbarService: TopbarService,
-              private orderService: OrderService,
+  constructor(public orderService: OrderService,
+              private topbarService: TopbarService,
               private router: Router) {
   }
 

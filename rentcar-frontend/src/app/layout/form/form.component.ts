@@ -11,13 +11,13 @@ import {TopbarActions} from '../topbar/topbar.component';
 })
 export class FormComponent implements OnInit {
 
-  @Input() private modelName: string;
-  @Input() private resourceService: ResourceService<any>;
-  @Input() private editedModelId: string;
-  @Input() private mode: FormMode;
-  @Input() private error: any;
-  @Input() private model: any;
-  @Input() private onSuccess: Function;
+  @Input() public modelName: string;
+  @Input() public resourceService: ResourceService<any>;
+  @Input() public editedModelId: string;
+  @Input() public mode: FormMode;
+  @Input() public error: any;
+  @Input() public model: any;
+  @Input() public onSuccess: Function;
 
   private formModes: any = FormMode;
   private formIsLoaded = false;

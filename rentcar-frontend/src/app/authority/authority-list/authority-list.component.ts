@@ -40,7 +40,7 @@ export class AuthorityListComponent implements OnInit {
   captions: string[] = ['Id', 'Authority'];
   columns: string[] = ['id', 'authority'];
   tittle = 'Add authority';
-  private tableResponse: TableResponse<Authority>;
+  public tableResponse: TableResponse<Authority>;
 
 
   ngOnInit() {

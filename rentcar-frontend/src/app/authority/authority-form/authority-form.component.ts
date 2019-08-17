@@ -16,7 +16,7 @@ export class AuthorityFormComponent implements OnInit, ModalFormComponent {
   authority: Authority;
   closeModal: Function;
   afterSave: Function;
-  private error: any;
+  error: any;
   mode: FormMode;
   data: any;
   dataService: any;

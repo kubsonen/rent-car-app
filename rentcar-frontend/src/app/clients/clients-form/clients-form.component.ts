@@ -17,9 +17,9 @@ import {InputField} from '../../layout/input-field/input-field.component';
 })
 export class ClientsFormComponent implements OnInit {
 
-  private error: any;
-  private client: Client;
-  private uid: string;
+  public error: any;
+  public client: Client;
+  public uid: string;
   mode: FormMode;
   formMode: any = FormMode;
   loaded = false;

@@ -14,8 +14,8 @@ export class BundlePropertyFormComponent implements OnInit, ModalFormComponent {
   constructor(private bundlePropertyService: BundlePropertyService) { }
 
   @ViewChild('propertyInput', {static: true, read: ValidInputComponent}) validInput: ValidInputComponent;
-  private bundlePropertyAdd: BundlePropertyAdd;
-  private error: any;
+  public bundlePropertyAdd: BundlePropertyAdd;
+  public error: any;
   closeModal: Function;
   afterSave: Function;
   data: any;

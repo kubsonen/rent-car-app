@@ -6,12 +6,12 @@ import {Common} from '../model/common.model';
 
 export abstract class FormLayout<M extends Common> {
 
-  protected uid: string;
-  protected error: any;
-  protected mode: FormMode;
-  protected formMode: any = FormMode;
-  protected isLoaded = false;
-  protected model: M;
+  public uid: string;
+  public error: any;
+  public mode: FormMode;
+  public formMode: any = FormMode;
+  public isLoaded = false;
+  public model: M;
 
   protected constructor(protected topbarService: TopbarService,
                         protected resourceService: ResourceService<M>,

@@ -17,7 +17,7 @@ export class AuthorityPrivilegeFormComponent implements OnInit, ModalFormCompone
   dataService: any;
   closeModal: Function;
   afterSave: Function;
-  private error: any;
+  public error: any;
 
   ngOnInit() {
     this.privilege = new Privilege();

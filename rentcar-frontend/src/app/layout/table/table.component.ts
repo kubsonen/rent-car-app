@@ -18,8 +18,8 @@ export class TableComponent implements OnInit {
   @Input() singleSelect = false;
   @Input() dblClick: () => void;
 
-  private multipleLock = false;
-  private isAllSelectionActive = false;
+  public multipleLock = false;
+  public isAllSelectionActive = false;
 
   constructor() {
   }

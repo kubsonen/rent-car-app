@@ -20,7 +20,7 @@ export class AuthorityPrivilegeListComponent implements OnInit {
 
   captions: string[] = ['Id', 'Privilege', 'Description'];
   columns: string[] = ['id', 'privilege', 'description'];
-  private tableResponse: TableResponse<Privilege>;
+  public tableResponse: TableResponse<Privilege>;
 
   constructor(private topbarService: TopbarService,
               private privilegeService: PrivilegeService,

@@ -14,8 +14,8 @@ export class BundleGroupFormComponent implements OnInit, ModalFormComponent {
   constructor(private bundleGroupService: BundleGroupService) {
   }
 
-  private bundleGroup: BundleGroup;
-  private error: any;
+  public bundleGroup: BundleGroup;
+  public error: any;
   closeModal: Function;
   afterSave: Function;
   mode: FormMode;

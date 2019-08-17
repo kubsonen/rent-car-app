@@ -18,8 +18,8 @@ export class TableColumnConfigComponent implements OnInit, ModalFormComponent {
   data: string; // Table id
   dataService: PageService<any>; // Service to save and get configurations
 
-  private items: TableConfig[];
-  private dragItem: TableConfig;
+  public items: TableConfig[];
+  public dragItem: TableConfig;
 
   ngOnInit() {
     this.dataService.getTableConfig(this.data).subscribe(value => {

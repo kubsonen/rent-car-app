@@ -15,8 +15,8 @@ import {AuhorityPrivilege} from '../../core/model/auhority-privilege.model';
 })
 export class AuthoritySetupComponent implements OnInit {
 
-  private authorities: Authority[];
-  private privileges: Privilege[];
+  public authorities: Authority[];
+  public privileges: Privilege[];
 
   constructor(private topbarService: TopbarService,
               private authorityService: AuthorityService,

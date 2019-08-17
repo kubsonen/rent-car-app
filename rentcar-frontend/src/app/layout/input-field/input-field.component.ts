@@ -123,12 +123,12 @@ export class InputComboItem {
 export class InputFieldComponent implements OnInit {
 
   /* Immutable fields component */
-  @Input() private inputField: InputField;
+  @Input() public inputField: InputField;
 
   /* Common mutable fields*/
-  @Input() private loaded: boolean;
-  @Input() private model: any;
-  @Input() private error: any;
+  @Input() public loaded: boolean;
+  @Input() public model: any;
+  @Input() public error: any;
 
   /* Enums */
   inputType: any = InputType;

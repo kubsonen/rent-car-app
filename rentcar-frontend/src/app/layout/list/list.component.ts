@@ -28,8 +28,8 @@ export class ListComponent implements OnInit {
   userColumns: string[] = [];
 
 
-  private tableRequest: TableRequest;
-  private tableResponse: TableResponse<Common>;
+  public tableRequest: TableRequest;
+  public tableResponse: TableResponse<Common>;
   editFunction: Function;
 
   @Output() refreshList: Function = () => this.refreshTable();
@@ -95,7 +95,6 @@ export class ListComponent implements OnInit {
   }
 
   private deleteObject() {
-
     const c: Commons = new Commons();
     const ids: Array<string> = new Array<string>();
 

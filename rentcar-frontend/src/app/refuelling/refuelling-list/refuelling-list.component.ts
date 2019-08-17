@@ -12,15 +12,15 @@ import {RefuellingService} from '../../core/service/refuelling.service';
 })
 export class RefuellingListComponent implements OnInit, AfterViewInit {
 
-  constructor(private refuellingService: RefuellingService,
+  constructor(public refuellingService: RefuellingService,
               private router: Router) {
   }
 
   @ViewChild(ListComponent, {static: true}) listComponent: ListComponent;
 
-  private addFunction: Function = () => this.router.navigate(['refuelling/add']);
-  private editFunction: Function = (c: Car) => this.router.navigate(['refuelling/edit/' + c.id]);
-  private deleteFunction: Function = (c: Commons) => this.deleteRefuelling(c);
+  public addFunction: Function = () => this.router.navigate(['refuelling/add']);
+  public editFunction: Function = (c: Car) => this.router.navigate(['refuelling/edit/' + c.id]);
+  public deleteFunction: Function = (c: Commons) => this.deleteRefuelling(c);
 
 
   ngOnInit() {

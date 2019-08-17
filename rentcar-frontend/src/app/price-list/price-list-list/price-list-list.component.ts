@@ -12,15 +12,15 @@ import {Commons} from '../../core/model/commons.model';
 })
 export class PriceListListComponent implements OnInit, AfterViewInit {
 
-  constructor(private priceListService: PriceListService,
+  constructor(public priceListService: PriceListService,
               private router: Router) {
   }
 
   @ViewChild(ListComponent, {static: true}) listComponent: ListComponent;
 
-  private addFunction: Function = () => this.router.navigate(['priceList/add']);
-  private editFunction: Function = (c: Car) => this.router.navigate(['priceList/edit/' + c.id]);
-  private deleteFunction: Function = (c: Commons) => this.deletePriceList(c);
+  public addFunction: Function = () => this.router.navigate(['priceList/add']);
+  public editFunction: Function = (c: Car) => this.router.navigate(['priceList/edit/' + c.id]);
+  public deleteFunction: Function = (c: Commons) => this.deletePriceList(c);
 
   ngOnInit() {
   }

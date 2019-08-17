@@ -36,10 +36,7 @@ export class CarFormComponent extends FormLayout<Car> implements OnInit {
               private bundlePropertyService: BundlePropertyService,
               private priceListService: PriceListService) {
 
-    super(topbarService, carService, () => {
-      this.router.navigate(['cars']);
-    });
-
+    super(topbarService, carService, () => this.router.navigate(['cars']));
     this.typeInput = InputField.inputComboConst('Type', 'type', bundlePropertyService, 'CarType');
     this.brandInput = InputField.inputComboConst('Brand', 'brand', bundlePropertyService, 'Brands');
     this.fuelTypeInput = InputField.inputComboConst('Fuel', 'fuelType', bundlePropertyService, 'FuelType');

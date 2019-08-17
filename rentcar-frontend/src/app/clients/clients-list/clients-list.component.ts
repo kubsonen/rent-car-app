@@ -13,12 +13,12 @@ export class ClientsListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(ListComponent, { static: true }) listComponent: ListComponent;
 
-  constructor(private router: Router,
-              private clientService: ClientsService) {
+  constructor(public router: Router,
+              public clientService: ClientsService) {
   }
 
-  private addFunction: Function = () => this.addClient();
-  private editFunction: Function = (c: Client) => this.editClient(c);
+  public addFunction: Function = () => this.addClient();
+  public editFunction: Function = (c: Client) => this.editClient(c);
 
   ngOnInit() {}
 

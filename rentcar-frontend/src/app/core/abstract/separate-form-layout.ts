@@ -6,16 +6,16 @@ import {SeparateCrudService} from './separate-crud-service';
 
 export abstract class SeparateFormLayout<ADD extends Common, P extends Common> {
 
-  protected uid: string;
-  protected error: any;
-  protected mode: FormMode;
-  protected formMode: any = FormMode;
-  protected isLoaded = false;
-  protected modelAdd: ADD;
-  protected model: P;
+  public uid: string;
+  public error: any;
+  public mode: FormMode;
+  public formMode: any = FormMode;
+  public isLoaded = false;
+  public modelAdd: ADD;
+  public model: P;
 
-  private onAddSuccess: () => void;
-  private onEditSuccess: () => void;
+  public onAddSuccess: () => void;
+  public onEditSuccess: () => void;
 
   protected constructor(protected separateCrudService: SeparateCrudService<ADD, P>) {
   }

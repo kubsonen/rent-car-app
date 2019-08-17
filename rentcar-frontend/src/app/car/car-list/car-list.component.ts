@@ -15,20 +15,17 @@ import {Car} from '../../core/model/car.model';
 export class CarListComponent implements OnInit, AfterViewInit {
 
   constructor(topbarService: TopbarService,
-              private carService: CarService,
+              public carService: CarService,
               private router: Router) {
     const actions: TopbarActions = new TopbarActions();
     topbarService.setAcions(actions);
   }
 
-  private captions: string[] = ['Brand', 'VIN', 'Plates'];
-  private columns: string[] = ['brand', 'vin', 'plateNumber'];
-
   @ViewChild(ListComponent, { static: true }) listComponent: ListComponent;
 
-  private addFunction: Function = () => this.router.navigate(['cars/add']);
-  private editFunction: Function = (c: Car) => this.router.navigate(['cars/edit/' + c.id])
-  private deleteFunction: Function = (c: Commons) => this.deleteCar(c);
+  public addFunction: Function = () => this.router.navigate(['cars/add']);
+  public editFunction: Function = (c: Car) => this.router.navigate(['cars/edit/' + c.id])
+  public deleteFunction: Function = (c: Commons) => this.deleteCar(c);
 
   ngOnInit() {
   }

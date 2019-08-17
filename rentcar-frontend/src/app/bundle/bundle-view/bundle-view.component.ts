@@ -38,9 +38,9 @@ export class BundleViewComponent implements OnInit {
 
   private addBundleGroupTittle = 'Add bundle group';
   private addBundlePropertyTittle = 'Add bundle property for group ';
-  private selectedBundleGroup: BundleGroup;
-  private bundleProperties: BundleProperty[];
-  private bundleGroups: BundleGroup[];
+  public selectedBundleGroup: BundleGroup;
+  public bundleProperties: BundleProperty[];
+  public bundleGroups: BundleGroup[];
 
   ngOnInit() {
     this.refreshGroups();

@@ -17,7 +17,7 @@ public class ControllerAngular {
             "/refuelling/{[path:[^\\.]*}",
             "/priceList/{[path:[^\\.]*}"})
     public String redirect() {
-        return "forward:/";
+        return "forward:/index.html";
     }
 
 }
